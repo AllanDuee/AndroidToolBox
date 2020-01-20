@@ -11,30 +11,42 @@ class LifeCycleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_life_cycle)
+
+        notification("onCreate", true)
+    }
+
+    private fun notification(message : String, IsActive : Boolean) {
+        if (IsActive) {
+            activity_lifecycle_text.text = message
+        }
+        else {
+            Log.d("TAG", message)
+        }
     }
 
     override fun onStart() {
         super.onStart()
-        activity_lifecycle_text.text ="Activité lancé"
+        notification("onStart", true)
     }
 
     override fun onResume() {
         super.onResume()
-        activity_lifecycle_text.text ="Activité résumé"
+        notification("onResume", true)
     }
 
     override fun onPause() {
         super.onPause()
-        Log.d("INFO","Activité en pause")
+        notification("onPause", false)
     }
 
     override fun onStop() {
         super.onStop()
-        Log.d("INFO","Activité stoppé")
+        notification("onStop", false)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Toast.makeText(this@LifeCycleActivity, "l'activité a été détruite", Toast.LENGTH_SHORT).show()
+        notification("onDestroy", false)
+        Toast.makeText(this@LifeCycleActivity, "onDestroy", Toast.LENGTH_SHORT).show()
     }
 }
