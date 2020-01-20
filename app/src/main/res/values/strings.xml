@@ -4,4 +4,9 @@
     <string name="login_activity_label_email">Identifiant</string>
     <string name="login_activity_label_password">Mot de Passe</string>
     <string name="login_activity_button_validForm">Valider</string>
+    <string name="home_activity_title">Bonjour</string>
+    <string name="home_activity_button_top_left_name">Cycle de Vie</string>
+    <string name="home_activity_button_top_right_name">Sauvegarde</string>
+    <string name="home_activity_button_bottom_left_name">Permissions</string>
+    <string name="home_activity_button_bottom_right_name">Webservices</string>
 </resources>

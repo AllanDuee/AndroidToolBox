@@ -6,4 +6,6 @@
     <color name="colorRedLight">#F10707</color>
     <color name="colorRedDark">#AA0000</color>
     <color name="colorWhite">#FFF</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorGrey">#555</color>
 </resources>
