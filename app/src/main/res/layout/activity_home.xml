@@ -11,7 +11,7 @@
         android:id="@+id/activity_home_picture"
         android:layout_width="141dp"
         android:layout_height="53dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:src="@drawable/isenlogo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +21,7 @@
         android:id="@+id/activity_home_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="@string/home_activity_title"
         android:textColor="@color/colorGrey"
         android:textSize="30sp"
@@ -56,7 +56,7 @@
         android:layout_width="130dp"
         android:layout_height="110dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:background="@color/colorRedLight"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_home_lifecycle_title"
@@ -115,5 +115,15 @@
         app:layout_constraintEnd_toEndOf="@+id/activity_home_webservices_picture"
         app:layout_constraintStart_toStartOf="@+id/activity_home_webservices_picture"
         app:layout_constraintTop_toBottomOf="@+id/activity_home_webservices_picture" />
+
+    <ImageView
+        android:id="@+id/activity_home_disconnect_button"
+        android:layout_width="107dp"
+        android:layout_height="97dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_home_permissions_title"
+        app:srcCompat="@android:drawable/ic_lock_power_off" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
