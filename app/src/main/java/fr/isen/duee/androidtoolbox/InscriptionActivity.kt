@@ -4,25 +4,36 @@ import android.app.AlertDialog
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.DatePicker
 import kotlinx.android.synthetic.main.activity_inscription.*
 import java.text.SimpleDateFormat
 import java.util.*
 import com.google.gson.Gson
-import androidx.core.app.ComponentActivity
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import android.util.Log
 import android.widget.Toast
 import java.io.File
-import java.io.FileWriter
-
+import java.io.FileReader
 
 class InscriptionActivity : AppCompatActivity() {
 
     var cal = Calendar.getInstance()
+
+    fun getAgeUser(dateOfBirth: String): Long{
+        val dateFormat = SimpleDateFormat("M/dd/yyyy")
+        val currentDate = Calendar.getInstance().timeInMillis
+
+        val userDateOfBirth = dateFormat.parse(dateOfBirth).time
+
+        val ageInMillis = currentDate - userDateOfBirth
+        val ageInSecond = ageInMillis / 1000
+        val ageInMinutes = ageInSecond / 60
+        val ageInHours = ageInMinutes / 60
+        val ageInDays = ageInHours / 24
+        val ageInYears = ageInDays / 365
+
+        return ageInYears
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,17 +75,28 @@ class InscriptionActivity : AppCompatActivity() {
 
             val user = User( lastName, firstName, dateOfBirth )
             File(cacheDir.absolutePath + "userInfo.json").writeText(gson.toJson(user))
-            Log.d("TAG",File(cacheDir.absolutePath + "userInfo.json").readText())
             Toast.makeText(this@InscriptionActivity, "L'utilisateur a été ajouté", Toast.LENGTH_SHORT).show()
         }
 
         activity_inscription_read_button.setOnClickListener {
 
+            val gson = Gson()
+
+            var user = User( "", "", "" )
+
+            user = gson.fromJson(FileReader(cacheDir.absolutePath + "userInfo.json"), User::class.java)
+
+            val firstNameUser = user.firstName
+            val lastNameUser = user.lastName
+            val dateOfBirthUser = user.dateOfBirth
+
+            val ageUser = getAgeUser(user.dateOfBirth)
+
             val builder = AlertDialog.Builder(this@InscriptionActivity)
 
             builder.setTitle("Informations du Json")
 
-            builder.setMessage("Voici les informations du Json : \n\nNom: \nPrénom: \nDate de Naissance: --/--/----\nAge :  ans")
+            builder.setMessage("Voici les informations du Json : \n\nNom: $lastNameUser\nPrénom: $firstNameUser\nDate de Naissance: $dateOfBirthUser\n\nAge : $ageUser ans")
 
             builder.setNegativeButton("Cancel"){_,_ ->
                 Toast.makeText(applicationContext,"You cancelled the dialog.",Toast.LENGTH_SHORT).show()
