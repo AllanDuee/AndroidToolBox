@@ -14,5 +14,6 @@
     <string name="inscription_activity_lastname">Nom</string>
     <string name="inscription_activity_firstname">Prénom</string>
     <string name="inscription_activity_date_button">Date Picker</string>
+    <string name="inscription_activity_read_json">Lecture</string>
     <string name="inscription_activity_date_naissance">Date de Naissance : </string>
 </resources>

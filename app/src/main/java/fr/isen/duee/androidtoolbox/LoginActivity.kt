@@ -40,7 +40,6 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-
         activity_login_button.setOnClickListener {
 
             var identifiant = activity_login_email_input.text.toString()
@@ -69,10 +68,6 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this@LoginActivity, "Identifiant incorect", Toast.LENGTH_SHORT).show()
                 }
             }
-        }
-        activity_login_inscription_button.setOnClickListener {
-            val inscriptionActivityIntent = Intent(this, InscriptionActivity::class.java)
-            startActivity(inscriptionActivityIntent);
         }
     }
 }

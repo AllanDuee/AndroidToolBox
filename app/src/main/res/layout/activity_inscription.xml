@@ -28,6 +28,7 @@
         app:layout_constraintTop_toBottomOf="@+id/activity_inscription_title">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/activity_inscription_lastname_input_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/inscription_activity_lastname" />
@@ -43,6 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/activity_inscription_lastname_input">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/activity_inscription_firstname_input_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/inscription_activity_firstname" />
@@ -60,20 +62,6 @@
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/activity_inscription_firstname_input" />
 
-    <Button
-        android:id="@+id/activity_inscription_date_button"
-        android:layout_width="119dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/colorBlack"
-        android:text="@string/inscription_activity_date_button"
-        android:textColor="@color/colorWhite"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/activity_inscription_date_text"
-        app:layout_constraintStart_toStartOf="@+id/activity_inscription_date_text"
-        app:layout_constraintTop_toBottomOf="@+id/activity_inscription_date_text" />
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -88,7 +76,7 @@
         android:id="@+id/activity_inscription_button"
         android:layout_width="188dp"
         android:layout_height="48dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="64dp"
         android:background="@color/colorRedLight"
         android:text="@string/login_activity_button_inscription"
         android:textColor="@color/colorWhite"
@@ -96,5 +84,19 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_inscription_date_button" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <Button
+        android:id="@+id/activity_inscription_read_button"
+        android:layout_width="188dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/colorBlack"
+        android:text="@string/inscription_activity_read_json"
+        android:textColor="@color/colorWhite"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/activity_inscription_button"
+        app:layout_constraintStart_toStartOf="@+id/activity_inscription_button"
+        app:layout_constraintTop_toBottomOf="@+id/activity_inscription_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>

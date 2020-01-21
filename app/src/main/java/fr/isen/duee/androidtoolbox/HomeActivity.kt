@@ -35,5 +35,11 @@ class HomeActivity : AppCompatActivity() {
             val loginActivityIntent = Intent(applicationContext, LoginActivity::class.java)
             startActivity(loginActivityIntent)
         }
+
+        activity_home_save_picture.setOnClickListener {
+
+            val intent = Intent(this, InscriptionActivity::class.java)
+            startActivity(intent);
+        }
     }
 }
