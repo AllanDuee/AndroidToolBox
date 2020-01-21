@@ -70,5 +70,9 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
+        activity_login_inscription_button.setOnClickListener {
+            val inscriptionActivityIntent = Intent(this, InscriptionActivity::class.java)
+            startActivity(inscriptionActivityIntent);
+        }
     }
 }
