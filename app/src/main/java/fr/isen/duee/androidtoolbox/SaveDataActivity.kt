@@ -64,18 +64,23 @@ class SaveDataActivity : AppCompatActivity() {
             val dateOfBirthUser = user.dateOfBirth
             val ageUser = getUserAge(user.dateOfBirth)
 
-            val builder = AlertDialog.Builder(this@SaveDataActivity)
-
-            builder.setTitle("Informations du Json")
-            builder.setMessage("Voici les informations du Json : \n\nNom: $lastNameUser\nPrénom: $firstNameUser\nDate de Naissance: $dateOfBirthUser\n\nAge : $ageUser ans")
-            builder.setNegativeButton("Cancel"){_,_ ->
-                Toast.makeText(applicationContext,"You cancelled the dialog.",Toast.LENGTH_SHORT).show()
-            }
-
-            val dialog: AlertDialog = builder.create()
-            dialog.show()
+            popUp(lastNameUser, firstNameUser, dateOfBirthUser, ageUser)
         }
     }
+
+    fun popUp(lastName: String, firstName: String, dateOfBirth: String, ageUser: Long) {
+        val builder = AlertDialog.Builder(this@SaveDataActivity)
+
+        builder.setTitle("Informations du Json")
+        builder.setMessage("Voici les informations du Json : \n\nNom: $lastName\nPrénom: $firstName\nDate de Naissance: $dateOfBirth\n\nAge : $ageUser ans")
+        builder.setNegativeButton("Cancel"){_,_ ->
+            Toast.makeText(applicationContext,"You cancelled the dialog.",Toast.LENGTH_SHORT).show()
+        }
+
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+    }
+
     fun updateDateInView() {
         val myFormat = "MM/dd/yyyy" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.US)
