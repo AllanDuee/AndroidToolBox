@@ -10,5 +10,4 @@ class User {
         this.firstName = firstName
         this.dateOfBirth = dateOfBirth
     }
-
 }

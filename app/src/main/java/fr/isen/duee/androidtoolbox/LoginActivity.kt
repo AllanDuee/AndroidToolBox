@@ -16,9 +16,12 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+        checkPreferences()
+        loginButtonClick()
+    }
 
-        val editor:SharedPreferences.Editor =  sharedPreferences.edit()
+    fun checkPreferences() {
+        val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
 
         val sharedEmailValue = sharedPreferences.getString("email","defaultemail")
         val sharedPasswordValue = sharedPreferences.getString("password","defaultpassword")
@@ -39,8 +42,11 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(homeActivityIntent)
             }
         }
-
+    }
+    fun loginButtonClick() {
         activity_login_button.setOnClickListener {
+
+            val editor:SharedPreferences.Editor =  this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE).edit()
 
             var identifiant = activity_login_email_input.text.toString()
             var password = activity_login_password_input.text.toString()

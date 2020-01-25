@@ -4,16 +4,16 @@
     <string name="login_activity_label_email">Identifiant</string>
     <string name="login_activity_label_password">Mot de Passe</string>
     <string name="login_activity_button_validForm">Valider</string>
-    <string name="login_activity_button_inscription">S inscrire</string>
     <string name="home_activity_title">Bonjour</string>
     <string name="home_activity_button_top_left_name">Cycle de Vie</string>
     <string name="home_activity_button_top_right_name">Sauvegarde</string>
     <string name="home_activity_button_bottom_left_name">Permissions</string>
     <string name="home_activity_button_bottom_right_name">Webservices</string>
-    <string name="inscription_activity_title">Page d Inscription</string>
-    <string name="inscription_activity_lastname">Nom</string>
-    <string name="inscription_activity_firstname">Prénom</string>
-    <string name="inscription_activity_date_button">Date Picker</string>
-    <string name="inscription_activity_read_json">Lecture</string>
-    <string name="inscription_activity_date_naissance">Date de Naissance : </string>
+    <string name="save_data_activity_title">Page de Sauvegarde des Données</string>
+    <string name="save_data_activity_lastname">Nom</string>
+    <string name="save_data_activity_firstname">Prénom</string>
+    <string name="save_data_activity_date_button">Date Picker</string>
+    <string name="save_data_activity_read_json">Lecture</string>
+    <string name="save_data_activity_date_naissance">Date de Naissance : </string>
+    <string name="save_data_activity_button_save">Sauvegarder</string>
 </resources>

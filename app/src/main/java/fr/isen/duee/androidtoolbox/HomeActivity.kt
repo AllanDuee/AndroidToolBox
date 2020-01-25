@@ -15,13 +15,29 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+        lifecycleButtonClick()
+        disconnectButtonClick()
+        saveButtonClick()
+    }
 
+    fun lifecycleButtonClick(){
         activity_home_lifecycle_picture.setOnClickListener {
 
             val intent = Intent(this, LifeCycleActivity::class.java)
             startActivity(intent);
         }
+    }
+
+    fun saveButtonClick(){
+        activity_home_save_picture.setOnClickListener {
+
+            val intent = Intent(this, SaveDataActivity::class.java)
+            startActivity(intent);
+        }
+    }
+
+    fun disconnectButtonClick(){
+        val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
 
         activity_home_disconnect_button.setOnClickListener {
             val editor: SharedPreferences.Editor = sharedPreferences.edit()
@@ -34,12 +50,6 @@ class HomeActivity : AppCompatActivity() {
 
             val loginActivityIntent = Intent(applicationContext, LoginActivity::class.java)
             startActivity(loginActivityIntent)
-        }
-
-        activity_home_save_picture.setOnClickListener {
-
-            val intent = Intent(this, InscriptionActivity::class.java)
-            startActivity(intent);
         }
     }
 }

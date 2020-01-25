@@ -15,21 +15,29 @@ private const val NUM_PAGES = 2
 class LifeCycleActivity : AppCompatActivity() {
 
     private lateinit var mPager: ViewPager
+    private val fragment1 = LifeCycleFragment()
+    private val fragment2 = LifeCycleSecondFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_life_cycle)
 
-        val fragment1 = LifeCycleFragment()
-        val fragment2 = LifeCycleSecondFragment()
+        sliderBetweenFragment()
+        changeFrangmentButtonClick()
 
+        notification("onCreate", true)
+    }
+
+    fun sliderBetweenFragment() {
         mPager = findViewById(R.id.activity_lifecycle_viewpager)
 
         val pagerAdapter = ScreenSlidePagerAdapter(supportFragmentManager)
         mPager.adapter = pagerAdapter
 
         supportFragmentManager.beginTransaction().add(R.id.activity_lifecycle_layout, fragment1).commit()
+    }
 
+    fun changeFrangmentButtonClick() {
         activity_lifecycle_button.setOnClickListener {
             if(fragment1.isVisible) {
                 supportFragmentManager.beginTransaction().replace(R.id.activity_lifecycle_layout, fragment2).commit()
@@ -38,8 +46,6 @@ class LifeCycleActivity : AppCompatActivity() {
                 supportFragmentManager.beginTransaction().replace(R.id.activity_lifecycle_layout, fragment1).commit()
             }
         }
-
-        notification("onCreate", true)
     }
 
     override fun onBackPressed() {
