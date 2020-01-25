@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context=".PhoneInformationActivity">
 
     <TextView
@@ -67,4 +68,12 @@
         android:text="5,363356"
         app:layout_constraintStart_toStartOf="@+id/activity_phone_lat_value"
         app:layout_constraintTop_toTopOf="@+id/activity_phone_long_title" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activity_phone_contact_recyclerview"
+        android:layout_width="415dp"
+        android:layout_height="438dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_phone_information_picture" />
 </androidx.constraintlayout.widget.ConstraintLayout>

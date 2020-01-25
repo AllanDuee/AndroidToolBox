@@ -19,4 +19,7 @@
     <string name="phone_information_activity_title">Accès aux informations Android</string>
     <string name="phone_information_activity_lat_title">Lattitude : </string>
     <string name="phone_information_activity_long_title">Longitude : </string>
+    <string name="contact_phone_number_title">Numéro de Téléphone : </string>
+    <string name="contact_email_title">Adresse Email : </string>
+    <string name="contact_birthday_title">Date de Naissance : </string>
 </resources>

@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.Toast
-import androidx.annotation.RequiresApi
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_phone_information.*
 
 class PhoneInformationActivity : AppCompatActivity() {
@@ -25,11 +25,30 @@ class PhoneInformationActivity : AppCompatActivity() {
     }
     var image_uri: Uri? = null
 
+    val users = mutableListOf<User>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_phone_information)
 
         imageClick()
+
+        addContacts()
+
+        activity_phone_contact_recyclerview.apply {
+            layoutManager = LinearLayoutManager(this@PhoneInformationActivity)
+            adapter = UsersAdapter(users)
+        }
+
+    }
+
+    fun addContacts() {
+        users.add(User("DUEE", "Allan", "18/06/1997", "1245697854", "allan.duee@isen.yncrea.fr"))
+        users.add(User("THOMAS", "Valentin", "12/01/1989", "0125469875", "valentin.thomas@isen.yncrea.fr"))
+        users.add(User("DOE", "John", "05/01/1935", "0569874532", "john.doe@gmail.com"))
+        users.add(User("BENNET", "Phil", "25/09/2011", "04563289", "phil.bennet@gmail.com"))
+        users.add(User("BRIDGE", "Bob", "12/01/1989", "0125469875", "bob.bridge@gmail.com"))
+        users.add(User("TODAY", "Tom", "16/08/1977", "0985632145", "tom.today@gmail.com"))
     }
 
     fun imageClick() {
