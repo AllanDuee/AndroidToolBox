@@ -20,8 +20,8 @@
 
     <ImageView
         android:id="@+id/activity_phone_information_picture"
-        android:layout_width="96dp"
-        android:layout_height="64dp"
+        android:layout_width="126dp"
+        android:layout_height="86dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_phone_information_title"
