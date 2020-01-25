@@ -28,7 +28,7 @@ class SaveDataActivity : AppCompatActivity() {
     }
 
     fun dateButtonClick() {
-        val textview_date = this.activity_save_data_date_text
+        val textview_date = this.activity_save_data_date_picker_zone
 
         textview_date!!.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
@@ -45,7 +45,7 @@ class SaveDataActivity : AppCompatActivity() {
         activity_save_data_button.setOnClickListener {
             val lastName = activity_save_data_lastname_input_text.text.toString()
             val firstName = activity_save_data_firstname_input_text.text.toString()
-            val dateOfBirth = activity_save_data_date_text.text.toString()
+            val dateOfBirth = activity_save_data_date_picker_zone.text.toString()
 
             val user = User( lastName, firstName, dateOfBirth )
             File(cacheDir.absolutePath + "userInfo.json").writeText(Gson().toJson(user))
@@ -79,7 +79,7 @@ class SaveDataActivity : AppCompatActivity() {
     fun updateDateInView() {
         val myFormat = "MM/dd/yyyy" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.US)
-        activity_save_data_date_text!!.text = sdf.format(cal.getTime())
+        activity_save_data_date_picker_zone!!.text = sdf.format(cal.getTime())
     }
 
     fun setCalendar () :  DatePickerDialog.OnDateSetListener {

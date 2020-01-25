@@ -51,7 +51,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/activity_save_data_date_text"
+        android:id="@+id/activity_save_data_date_picker_zone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
@@ -59,18 +59,18 @@
         android:textColor="@color/colorRedDark"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="@+id/activity_save_data_firstname_input"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintStart_toEndOf="@+id/activity_save_data_date_of_birth_title"
         app:layout_constraintTop_toBottomOf="@+id/activity_save_data_firstname_input" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/activity_save_data_date_of_birth_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/save_data_activity_date_naissance"
         android:textColor="@color/colorBlack"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="@+id/activity_save_data_firstname_input"
-        app:layout_constraintTop_toTopOf="@+id/activity_save_data_date_text" />
+        app:layout_constraintTop_toTopOf="@+id/activity_save_data_date_picker_zone" />
 
     <Button
         android:id="@+id/activity_save_data_button"
@@ -84,7 +84,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_save_data_date_of_birth_title" />
 
     <Button
         android:id="@+id/activity_save_data_read_button"

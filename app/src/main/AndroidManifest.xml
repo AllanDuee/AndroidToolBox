@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SaveDataActivity"></activity>
+        <activity android:name=".PhoneInformationActivity"></activity>
+        <activity android:name=".SaveDataActivity" />
         <activity android:name=".LifeCycleActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".LoginActivity">
