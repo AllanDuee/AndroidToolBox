@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PhoneInformationActivity">
+
+    <TextView
+        android:id="@+id/activity_phone_information_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/phone_information_activity_title"
+        android:textColor="@color/colorBlack"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/activity_phone_information_picture"
+        android:layout_width="96dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_phone_information_title"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+
+    <TextView
+        android:id="@+id/activity_phone_lat_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:textColor="@color/colorBlack"
+        android:text="@string/phone_information_activity_lat_title"
+        app:layout_constraintStart_toEndOf="@+id/activity_phone_information_picture"
+        app:layout_constraintTop_toTopOf="@+id/activity_phone_information_picture" />
+
+    <TextView
+        android:id="@+id/activity_phone_long_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/phone_information_activity_long_title"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_phone_information_picture"
+        app:layout_constraintStart_toStartOf="@+id/activity_phone_lat_title"
+        app:layout_constraintTop_toBottomOf="@+id/activity_phone_lat_title" />
+
+    <TextView
+        android:id="@+id/activity_phone_lat_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:text="43,477477"
+        app:layout_constraintStart_toEndOf="@+id/activity_phone_lat_title"
+        app:layout_constraintTop_toTopOf="@+id/activity_phone_lat_title" />
+
+    <TextView
+        android:id="@+id/activity_phone_long_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:text="5,363356"
+        app:layout_constraintStart_toStartOf="@+id/activity_phone_lat_value"
+        app:layout_constraintTop_toTopOf="@+id/activity_phone_long_title" />
+</androidx.constraintlayout.widget.ConstraintLayout>

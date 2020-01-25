@@ -16,8 +16,10 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         lifecycleButtonClick()
-        disconnectButtonClick()
         saveButtonClick()
+        permissionButtonClick()
+
+        disconnectButtonClick()
     }
 
     fun lifecycleButtonClick(){
@@ -32,6 +34,14 @@ class HomeActivity : AppCompatActivity() {
         activity_home_save_picture.setOnClickListener {
 
             val intent = Intent(this, SaveDataActivity::class.java)
+            startActivity(intent);
+        }
+    }
+
+    fun permissionButtonClick(){
+        activity_home_permissions_picture.setOnClickListener {
+
+            val intent = Intent(this, PhoneInformationActivity::class.java)
             startActivity(intent);
         }
     }
