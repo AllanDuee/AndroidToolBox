@@ -18,6 +18,6 @@ class User {
         this.firstName = firstName
         this.dateOfBirth = dateOfBirth
         this.number = number
-        this.email = number
+        this.email = email
     }
 }

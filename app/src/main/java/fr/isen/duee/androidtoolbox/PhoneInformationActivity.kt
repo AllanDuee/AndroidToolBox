@@ -37,9 +37,31 @@ class PhoneInformationActivity : AppCompatActivity() {
 
         activity_phone_contact_recyclerview.apply {
             layoutManager = LinearLayoutManager(this@PhoneInformationActivity)
-            adapter = UsersAdapter(users)
+            adapter = UsersAdapter(users, { user -> userItemClicked(user)})
         }
 
+    }
+
+    fun userItemClicked(user: User) {
+        Toast.makeText(this, "Clicked: ${user.firstName} ${user.lastName}", Toast.LENGTH_SHORT).show()
+
+        val bundle = Bundle()
+        val userFirstname = user.firstName
+        val userLastname = user.lastName
+        val userEmail = user.email
+        val userNumber = user.number
+        val userBirthday = user.dateOfBirth
+
+        bundle.putString("userFirstname", userFirstname)
+        bundle.putString("userLastname", userLastname)
+        bundle.putString("userEmail", userEmail)
+        bundle.putString("userNumber", userNumber)
+        bundle.putString("userBirthday", userBirthday)
+
+        val fragment = SpecificUserFragment()
+        fragment.arguments = bundle
+
+        getSupportFragmentManager().beginTransaction().add(R.id.activity_phone_information, fragment).commit()
     }
 
     fun addContacts() {
