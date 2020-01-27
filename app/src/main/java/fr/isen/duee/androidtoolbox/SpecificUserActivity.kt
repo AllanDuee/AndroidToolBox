@@ -16,17 +16,11 @@ class SpecificUserActivity : AppCompatActivity() {
     }
 
     fun changeActivityTextView() {
-        val userFirstname=intent.getStringExtra("userFirstname")
-        val userLarstname = intent.getStringExtra("userLastname")
-        val userEmail = intent.getStringExtra("userEmail")
-        val userPhoneNumber = intent.getStringExtra("userNumber")
-        val userBirthday = intent.getStringExtra("userBirthday")
+        val contactName=intent.getStringExtra("contactName")
+        val contactNumber = intent.getStringExtra("contactNumber")
 
-        specificUserFirstnameValue.text = userFirstname
-        specificUserLastnameValue.text = userLarstname
-        specificUserEmailValue.text = userEmail
-        specificUserPhoneNumberValue.text = userPhoneNumber
-        specificUserDateOfBirthValue.text = userBirthday
+        specificUserNameValue.text = contactName
+        specificUserPhoneNumberValue.text = contactNumber
     }
 
     fun buttonGoBackClick() {

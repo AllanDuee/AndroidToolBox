@@ -3,6 +3,7 @@ package fr.isen.duee.androidtoolbox
 import android.Manifest
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.ContentResolver
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_phone_information.*
@@ -23,10 +25,11 @@ class PhoneInformationActivity : AppCompatActivity() {
         private val PERMISSION_CODE_GALLERY = 1001;
         private val IMAGE_CAPTURE_CODE_CAMERA = 1002;
         private val PERMISSION_CODE_CAMERA = 1003;
+        val PERMISSIONS_REQUEST_READ_CONTACTS = 100;
     }
     var image_uri: Uri? = null
 
-    val users = mutableListOf<User>()
+    val contacts = mutableListOf<Contact>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,62 +39,87 @@ class PhoneInformationActivity : AppCompatActivity() {
 
         addContacts()
 
-        contactRecyclerView.apply {
-            layoutManager = LinearLayoutManager(this@PhoneInformationActivity)
-            adapter = UsersAdapter(users, { user -> userItemClicked(user)})
-        }
+        loadContacts()
+
+        contactRecyclerView.layoutManager = LinearLayoutManager(this)
+        contactRecyclerView.adapter = ContactAdapter(contacts, { contact -> contactItemClicked(contact)})
 
     }
 
-    /*fun getContact() {
-        val phones = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC")
-        while (phones!!.moveToNext()) {
-            val firstname = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
-            val phoneNumber = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+    fun loadContacts() {
+        var builder = StringBuilder()
 
-            users.add()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(
+                Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(arrayOf(Manifest.permission.READ_CONTACTS),
+                PERMISSIONS_REQUEST_READ_CONTACTS)
+            //callback onRequestPermissionsResult
+        } else {
+            getContacts()
+            Log.d("TAG", "contact = " + builder.toString())
 
+           // listContacts.text = builder.toString()
         }
-        phones.close()
-    }*/
+    }
 
-    fun userItemClicked(user: User) {
-        Toast.makeText(this, "Clicked: ${user.firstName} ${user.lastName}", Toast.LENGTH_SHORT).show()
+    private fun getContacts(): StringBuilder {
+        val builder = StringBuilder()
+        val resolver: ContentResolver = contentResolver;
+        val cursor = resolver.query(ContactsContract.Contacts.CONTENT_URI, null, null, null,
+            null)
+
+        if (cursor.count > 0) {
+            while (cursor.moveToNext()) {
+                val id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID))
+                val name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
+                val phoneNumber = (cursor.getString(
+                    cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))).toInt()
+
+                if (phoneNumber > 0) {
+                    val cursorPhone = contentResolver.query(
+                        ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                        null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=?", arrayOf(id), null)
+
+                    if(cursorPhone.count > 0) {
+                        while (cursorPhone.moveToNext()) {
+                            val phoneNumValue = cursorPhone.getString(
+                                cursorPhone.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+                            builder.append("Contact: ").append(name).append(", Phone Number: ").append(
+                                phoneNumValue).append("\n\n")
+                            contacts.add(Contact(name,phoneNumValue))
+                            //Log.e("Name ===>",phoneNumValue);
+                        }
+                    }
+                    cursorPhone.close()
+                }
+            }
+        } else {
+            Toast.makeText(this, "No contacts available!", Toast.LENGTH_SHORT).show()
+        }
+        cursor.close()
+        return builder
+    }
+
+    fun contactItemClicked(contact: Contact) {
+        Toast.makeText(this, "Clicked: ${contact.name}", Toast.LENGTH_SHORT).show()
 
         //val bundle = Bundle()
-        val userFirstname = user.firstName
-        val userLastname = user.lastName
-        val userEmail = user.email
-        val userNumber = user.number
-        val userBirthday = user.dateOfBirth
-
-        /*bundle.putString("userFirstname", userFirstname)
-        bundle.putString("userLastname", userLastname)
-        bundle.putString("userEmail", userEmail)
-        bundle.putString("userNumber", userNumber)
-        bundle.putString("userBirthday", userBirthday)
-
-        val fragment = SpecificUserFragment()
-        fragment.arguments = bundle
-
-        getSupportFragmentManager().beginTransaction().add(R.id.activity_phone_information, fragment).commit()*/
+        val contactName = contact.name
+        val contactNumber = contact.number
 
         val intent = Intent(this@PhoneInformationActivity,SpecificUserActivity::class.java)
-        intent.putExtra("userFirstname",userFirstname)
-        intent.putExtra("userLastname",userLastname)
-        intent.putExtra("userEmail",userEmail)
-        intent.putExtra("userNumber",userNumber)
-        intent.putExtra("userBirthday",userBirthday)
+        intent.putExtra("contactName",contactName)
+        intent.putExtra("contactNumber",contactNumber)
         startActivity(intent)
     }
 
     fun addContacts() {
-        users.add(User("DUEE", "Allan", "18/06/1997", "1245697854", "allan.duee@isen.yncrea.fr"))
-        users.add(User("THOMAS", "Valentin", "12/01/1989", "0125469875", "valentin.thomas@isen.yncrea.fr"))
-        users.add(User("DOE", "John", "05/01/1935", "0569874532", "john.doe@gmail.com"))
-        users.add(User("BENNET", "Phil", "25/09/2011", "04563289", "phil.bennet@gmail.com"))
-        users.add(User("BRIDGE", "Bob", "12/01/1989", "0125469875", "bob.bridge@gmail.com"))
-        users.add(User("TODAY", "Tom", "16/08/1977", "0985632145", "tom.today@gmail.com"))
+        contacts.add(Contact("Allan DUEE", "1245697854"))
+        contacts.add(Contact("Valentin THOMAS", "0125469875"))
+        contacts.add(Contact("John DOE", "0569874532"))
+        contacts.add(Contact("Phil BENNET", "04563289"))
+        contacts.add(Contact("Bob BRIDGE", "0463259841"))
+        contacts.add(Contact("Tom Today", "0985632145"))
     }
 
     fun imageClick() {
@@ -205,6 +233,15 @@ class PhoneInformationActivity : AppCompatActivity() {
                 else{
                     //permission from popup denied
                     Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+                }
+            }
+            PERMISSIONS_REQUEST_READ_CONTACTS -> {
+                if (requestCode == PERMISSIONS_REQUEST_READ_CONTACTS) {
+                    if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                        loadContacts()
+                    } else {
+                        Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }

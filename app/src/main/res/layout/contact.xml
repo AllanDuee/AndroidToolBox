@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/contactToolbar"
-        android:layout_width="415dp"
-        android:layout_height="152dp"
+        android:layout_width="422dp"
+        android:layout_height="101dp"
         android:background="?attr/colorPrimary"
         android:backgroundTint="@color/colorWhite"
         android:minHeight="?attr/actionBarSize"
@@ -17,15 +18,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/contactFirstname"
+        android:id="@+id/contactName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="16dp"
-        android:text="Firstname"
+        android:text="Name"
         android:textColor="@color/colorBlack"
         android:textSize="20dp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/contactToolbar" />
 
@@ -39,18 +41,7 @@
         android:textColor="@color/colorBlack"
         android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactFirstname" />
-
-    <TextView
-        android:id="@+id/contactEmailTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/contact_email_title"
-        android:textColor="@color/colorBlack"
-        android:textSize="15dp"
-        app:layout_constraintStart_toStartOf="@+id/contactPhoneNumberTitle"
-        app:layout_constraintTop_toBottomOf="@+id/contactPhoneNumberTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/contactName" />
 
     <TextView
         android:id="@+id/contactPhoneNumberValue"
@@ -64,51 +55,5 @@
         app:layout_constraintBottom_toBottomOf="@+id/contactPhoneNumberTitle"
         app:layout_constraintStart_toEndOf="@+id/contactPhoneNumberTitle"
         app:layout_constraintTop_toTopOf="@+id/contactPhoneNumberTitle" />
-
-    <TextView
-        android:id="@+id/contactEmailValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textColor="@color/colorBlack"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/contactEmailTitle"
-        app:layout_constraintStart_toStartOf="@+id/contactPhoneNumberValue"
-        app:layout_constraintTop_toTopOf="@+id/contactEmailTitle" />
-
-    <TextView
-        android:id="@+id/contactDateOfBirthName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/contact_birthday_title"
-        android:textColor="@color/colorBlack"
-        android:textSize="15dp"
-        app:layout_constraintStart_toStartOf="@+id/contactEmailTitle"
-        app:layout_constraintTop_toBottomOf="@+id/contactEmailTitle" />
-
-    <TextView
-        android:id="@+id/contactDateOfBirthValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textColor="@color/colorBlack"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/contactEmailValue"
-        app:layout_constraintTop_toTopOf="@+id/contactDateOfBirthName" />
-
-    <TextView
-        android:id="@+id/contactLastname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Lastname"
-        android:textColor="@color/colorBlack"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/contactFirstname"
-        app:layout_constraintTop_toTopOf="@+id/contactFirstname" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

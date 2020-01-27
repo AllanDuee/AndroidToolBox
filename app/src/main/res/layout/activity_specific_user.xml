@@ -25,48 +25,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="@string/fragment_specific_contact_button_go_back"
         android:background="@color/colorRedLight"
+        android:text="@string/fragment_specific_contact_button_go_back"
         android:textColor="@color/colorWhite"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/specificUserDateOfBirthTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/specificUserPhoneNumberTitle" />
 
     <TextView
-        android:id="@+id/specificUserFirstnameTitle"
+        android:id="@+id/specificUserNameTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:text="@string/fragment_specific_contact_firstname_title"
+        android:text="@string/fragment_specific_contact_name_title"
         android:textColor="@color/colorBlack"
         android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/specificUserTitle" />
-
-    <TextView
-        android:id="@+id/specificUserLastnameTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/fragment_specific_contact_lastname_title"
-        android:textColor="@color/colorBlack"
-        android:textSize="15dp"
-        app:layout_constraintStart_toStartOf="@+id/specificUserFirstnameTitle"
-        app:layout_constraintTop_toBottomOf="@+id/specificUserFirstnameTitle" />
-
-    <TextView
-        android:id="@+id/specificUserEmailTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/fragment_specific_contact_email_title"
-        android:textColor="@color/colorBlack"
-        android:textSize="15dp"
-        app:layout_constraintStart_toStartOf="@+id/specificUserLastnameTitle"
-        app:layout_constraintTop_toBottomOf="@+id/specificUserLastnameTitle" />
 
     <TextView
         android:id="@+id/specificUserPhoneNumberTitle"
@@ -76,67 +54,11 @@
         android:text="@string/fragment_specific_contact_number_title"
         android:textColor="@color/colorBlack"
         android:textSize="15dp"
-        app:layout_constraintStart_toStartOf="@+id/specificUserEmailTitle"
-        app:layout_constraintTop_toBottomOf="@+id/specificUserEmailTitle" />
+        app:layout_constraintStart_toStartOf="@+id/specificUserNameTitle"
+        app:layout_constraintTop_toBottomOf="@+id/specificUserNameTitle" />
 
     <TextView
-        android:id="@+id/specificUserDateOfBirthTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/fragment_specific_contact_birthday_title"
-        android:textColor="@color/colorBlack"
-        android:textSize="15dp"
-        app:layout_constraintStart_toStartOf="@+id/specificUserPhoneNumberTitle"
-        app:layout_constraintTop_toBottomOf="@+id/specificUserPhoneNumberTitle" />
-
-    <TextView
-        android:id="@+id/specificUserFirstnameValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="110dp"
-        android:text="textView"
-        android:textColor="@color/colorBlack"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/specificUserFirstnameTitle"
-        app:layout_constraintTop_toTopOf="@+id/specificUserFirstnameTitle" />
-
-    <TextView
-        android:id="@+id/specificUserLastnameValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="textView"
-        android:textColor="@color/colorBlack"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/specificUserFirstnameValue"
-        app:layout_constraintTop_toTopOf="@+id/specificUserLastnameTitle" />
-
-    <TextView
-        android:id="@+id/specificUserEmailValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="textView"
-        android:textColor="@color/colorBlack"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/specificUserLastnameValue"
-        app:layout_constraintTop_toTopOf="@+id/specificUserEmailTitle" />
-
-    <TextView
-        android:id="@+id/specificUserPhoneNumberValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="textView"
-        android:textColor="@color/colorBlack"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/specificUserEmailValue"
-        app:layout_constraintTop_toTopOf="@+id/specificUserPhoneNumberTitle" />
-
-    <TextView
-        android:id="@+id/specificUserDateOfBirthValue"
+        android:id="@+id/specificUserNameValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="textView"
@@ -144,6 +66,18 @@
         android:textSize="15dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/specificUserPhoneNumberValue"
-        app:layout_constraintTop_toTopOf="@+id/specificUserDateOfBirthTitle" />
+        app:layout_constraintTop_toTopOf="@+id/specificUserNameTitle" />
+
+    <TextView
+        android:id="@+id/specificUserPhoneNumberValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="textView"
+        android:textColor="@color/colorBlack"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/specificUserPhoneNumberTitle"
+        app:layout_constraintTop_toTopOf="@+id/specificUserPhoneNumberTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
