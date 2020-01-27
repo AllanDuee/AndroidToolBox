@@ -7,7 +7,7 @@
     tools:context=".SaveDataActivity">
 
     <TextView
-        android:id="@+id/activity_save_data_title"
+        android:id="@+id/saveDataTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -19,61 +19,61 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/activity_save_data_lastname_input"
+        android:id="@+id/saveDataLastnameInput"
         android:layout_width="342dp"
         android:layout_height="60dp"
         android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_save_data_title">
+        app:layout_constraintTop_toBottomOf="@+id/saveDataTitle">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/activity_save_data_lastname_input_text"
+            android:id="@+id/saveDataLastnameInputText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/save_data_activity_lastname" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/activity_save_data_firstname_input"
+        android:id="@+id/saveDataFirstnameInput"
         android:layout_width="342dp"
         android:layout_height="60dp"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_save_data_lastname_input">
+        app:layout_constraintTop_toBottomOf="@+id/saveDataLastnameInput">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/activity_save_data_firstname_input_text"
+            android:id="@+id/saveDataFirstnameInputText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/save_data_activity_firstname" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/activity_save_data_date_picker_zone"
+        android:id="@+id/saveDataDatePickerZone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:text="--/--/----"
         android:textColor="@color/colorRedDark"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/activity_save_data_firstname_input"
-        app:layout_constraintStart_toEndOf="@+id/activity_save_data_date_of_birth_title"
-        app:layout_constraintTop_toBottomOf="@+id/activity_save_data_firstname_input" />
+        app:layout_constraintEnd_toEndOf="@+id/saveDataFirstnameInput"
+        app:layout_constraintStart_toEndOf="@+id/saveDataDateOfBirthTitle"
+        app:layout_constraintTop_toBottomOf="@+id/saveDataFirstnameInput" />
 
     <TextView
-        android:id="@+id/activity_save_data_date_of_birth_title"
+        android:id="@+id/saveDataDateOfBirthTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/save_data_activity_date_naissance"
         android:textColor="@color/colorBlack"
         android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="@+id/activity_save_data_firstname_input"
-        app:layout_constraintTop_toTopOf="@+id/activity_save_data_date_picker_zone" />
+        app:layout_constraintStart_toStartOf="@+id/saveDataFirstnameInput"
+        app:layout_constraintTop_toTopOf="@+id/saveDataDatePickerZone" />
 
     <Button
-        android:id="@+id/activity_save_data_button"
+        android:id="@+id/saveDataSaveButton"
         android:layout_width="188dp"
         android:layout_height="48dp"
         android:layout_marginTop="64dp"
@@ -84,10 +84,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_save_data_date_of_birth_title" />
+        app:layout_constraintTop_toBottomOf="@+id/saveDataDateOfBirthTitle" />
 
     <Button
-        android:id="@+id/activity_save_data_read_button"
+        android:id="@+id/saveDataReadButton"
         android:layout_width="188dp"
         android:layout_height="48dp"
         android:layout_marginTop="32dp"
@@ -96,7 +96,7 @@
         android:textColor="@color/colorWhite"
         android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/activity_save_data_button"
-        app:layout_constraintStart_toStartOf="@+id/activity_save_data_button"
-        app:layout_constraintTop_toBottomOf="@+id/activity_save_data_button" />
+        app:layout_constraintEnd_toEndOf="@+id/saveDataSaveButton"
+        app:layout_constraintStart_toStartOf="@+id/saveDataSaveButton"
+        app:layout_constraintTop_toBottomOf="@+id/saveDataSaveButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

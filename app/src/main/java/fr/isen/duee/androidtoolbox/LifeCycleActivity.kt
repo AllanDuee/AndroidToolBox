@@ -29,21 +29,21 @@ class LifeCycleActivity : AppCompatActivity() {
     }
 
     fun sliderBetweenFragment() {
-        mPager = findViewById(R.id.activity_lifecycle_viewpager)
+        mPager = findViewById(R.id.lifecycleViewPager)
 
         val pagerAdapter = ScreenSlidePagerAdapter(supportFragmentManager)
         mPager.adapter = pagerAdapter
 
-        supportFragmentManager.beginTransaction().add(R.id.activity_lifecycle_layout, fragment1).commit()
+        supportFragmentManager.beginTransaction().add(R.id.lifecycleLayout, fragment1).commit()
     }
 
     fun changeFrangmentButtonClick() {
-        activity_lifecycle_button.setOnClickListener {
+        lifeCycleButton.setOnClickListener {
             if(fragment1.isVisible) {
-                supportFragmentManager.beginTransaction().replace(R.id.activity_lifecycle_layout, fragment2).commit()
+                supportFragmentManager.beginTransaction().replace(R.id.lifecycleLayout, fragment2).commit()
             }
             else {
-                supportFragmentManager.beginTransaction().replace(R.id.activity_lifecycle_layout, fragment1).commit()
+                supportFragmentManager.beginTransaction().replace(R.id.lifecycleLayout, fragment1).commit()
             }
         }
     }
@@ -69,7 +69,7 @@ class LifeCycleActivity : AppCompatActivity() {
 
     private fun notification(message : String, IsActive : Boolean) {
         if (IsActive) {
-            activity_lifecycle_text.text = message
+            lifecycleTitle.text = message
         }
         else {
             Log.d("TAG", message)

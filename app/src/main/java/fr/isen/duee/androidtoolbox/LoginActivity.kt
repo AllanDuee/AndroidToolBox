@@ -27,8 +27,8 @@ class LoginActivity : AppCompatActivity() {
         val sharedPasswordValue = sharedPreferences.getString("password","defaultpassword")
 
         if(sharedEmailValue.equals("defaultemail") && sharedPasswordValue.equals("defaultpassword")){
-            activity_login_email_input.setText("")
-            activity_login_password_input.setText("")
+            loginEmailInputText.setText("")
+            loginPasswordInputText.setText("")
 
         }else{
             if(sharedEmailValue.equals("admin") && sharedPasswordValue.equals("123")) {
@@ -44,12 +44,12 @@ class LoginActivity : AppCompatActivity() {
         }
     }
     fun loginButtonClick() {
-        activity_login_button.setOnClickListener {
+        loginValidateButton.setOnClickListener {
 
             val editor:SharedPreferences.Editor =  this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE).edit()
 
-            var identifiant = activity_login_email_input.text.toString()
-            var password = activity_login_password_input.text.toString()
+            var identifiant = loginEmailInputText.text.toString()
+            var password = loginPasswordInputText.text.toString()
 
             editor.putString("email",identifiant)
             editor.putString("password",password)

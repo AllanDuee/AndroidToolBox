@@ -10,6 +10,7 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.provider.MediaStore
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -35,24 +36,36 @@ class PhoneInformationActivity : AppCompatActivity() {
 
         addContacts()
 
-        activity_phone_contact_recyclerview.apply {
+        contactRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@PhoneInformationActivity)
             adapter = UsersAdapter(users, { user -> userItemClicked(user)})
         }
 
     }
 
+    /*fun getContact() {
+        val phones = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC")
+        while (phones!!.moveToNext()) {
+            val firstname = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
+            val phoneNumber = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+
+            users.add()
+
+        }
+        phones.close()
+    }*/
+
     fun userItemClicked(user: User) {
         Toast.makeText(this, "Clicked: ${user.firstName} ${user.lastName}", Toast.LENGTH_SHORT).show()
 
-        val bundle = Bundle()
+        //val bundle = Bundle()
         val userFirstname = user.firstName
         val userLastname = user.lastName
         val userEmail = user.email
         val userNumber = user.number
         val userBirthday = user.dateOfBirth
 
-        bundle.putString("userFirstname", userFirstname)
+        /*bundle.putString("userFirstname", userFirstname)
         bundle.putString("userLastname", userLastname)
         bundle.putString("userEmail", userEmail)
         bundle.putString("userNumber", userNumber)
@@ -61,7 +74,15 @@ class PhoneInformationActivity : AppCompatActivity() {
         val fragment = SpecificUserFragment()
         fragment.arguments = bundle
 
-        getSupportFragmentManager().beginTransaction().add(R.id.activity_phone_information, fragment).commit()
+        getSupportFragmentManager().beginTransaction().add(R.id.activity_phone_information, fragment).commit()*/
+
+        val intent = Intent(this@PhoneInformationActivity,SpecificUserActivity::class.java)
+        intent.putExtra("userFirstname",userFirstname)
+        intent.putExtra("userLastname",userLastname)
+        intent.putExtra("userEmail",userEmail)
+        intent.putExtra("userNumber",userNumber)
+        intent.putExtra("userBirthday",userBirthday)
+        startActivity(intent)
     }
 
     fun addContacts() {
@@ -74,7 +95,7 @@ class PhoneInformationActivity : AppCompatActivity() {
     }
 
     fun imageClick() {
-        activity_phone_information_picture.setOnClickListener {
+        phoneInformationPicture.setOnClickListener {
             popUp()
         }
     }
@@ -192,11 +213,11 @@ class PhoneInformationActivity : AppCompatActivity() {
     //handle result of picked image
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE_GALLERY){
-            activity_phone_information_picture.setImageURI(data?.data)
+            phoneInformationPicture.setImageURI(data?.data)
         }
         else  if (resultCode == Activity.RESULT_OK){
             //set image captured to image view
-            activity_phone_information_picture.setImageURI(image_uri)
+            phoneInformationPicture.setImageURI(image_uri)
         }
     }
 }

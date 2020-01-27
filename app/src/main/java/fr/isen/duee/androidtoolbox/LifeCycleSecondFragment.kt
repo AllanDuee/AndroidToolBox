@@ -21,7 +21,7 @@ class LifeCycleSecondFragment : Fragment() {
 
     private fun notification(message : String, IsActive : Boolean) {
         if (IsActive) {
-            second_fragment_lifecycle_text.text = message
+            secondFragmentLifecycleText.text = message
         }
         else {
             Log.d("TAG", message)

@@ -9,6 +9,7 @@
     <string name="home_activity_button_top_right_name">Sauvegarde</string>
     <string name="home_activity_button_bottom_left_name">Permissions</string>
     <string name="home_activity_button_bottom_right_name">Webservices</string>
+    <string name="lifecycle_activity_button">Changer de Fragement</string>
     <string name="save_data_activity_title">Page de Sauvegarde des Données</string>
     <string name="save_data_activity_lastname">Nom</string>
     <string name="save_data_activity_firstname">Prénom</string>

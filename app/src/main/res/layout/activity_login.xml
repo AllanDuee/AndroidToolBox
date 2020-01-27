@@ -7,17 +7,17 @@
     tools:context=".LoginActivity">
 
     <ImageView
-    android:id="@+id/activity_login_picture"
+    android:id="@+id/loginPicture"
     android:layout_width="317dp"
     android:layout_height="128dp"
     android:layout_marginTop="32dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/activity_login_title"
+    app:layout_constraintTop_toBottomOf="@+id/loginTitle"
     app:srcCompat="@drawable/isenlogo"/>
 
     <Button
-    android:id="@+id/activity_login_button"
+    android:id="@+id/loginValidateButton"
     android:layout_width="134dp"
     android:layout_height="57dp"
     android:layout_marginTop="64dp"
@@ -26,12 +26,12 @@
     android:textColor="@color/colorWhite"
     android:textSize="20sp"
     android:textStyle="bold"
-    app:layout_constraintEnd_toEndOf="@+id/activity_login_password_input_layout"
-    app:layout_constraintStart_toStartOf="@+id/activity_login_password_input_layout"
-    app:layout_constraintTop_toBottomOf="@+id/activity_login_password_input_layout" />
+    app:layout_constraintEnd_toEndOf="@+id/loginPasswordInput"
+    app:layout_constraintStart_toStartOf="@+id/loginPasswordInput"
+    app:layout_constraintTop_toBottomOf="@+id/loginPasswordInput" />
 
     <TextView
-    android:id="@+id/activity_login_title"
+    android:id="@+id/loginTitle"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="32dp"
@@ -44,31 +44,31 @@
     app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/activity_login_email_input_layout"
+        android:id="@+id/loginEmailInput"
         android:layout_width="317dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        app:layout_constraintStart_toStartOf="@+id/activity_login_picture"
-        app:layout_constraintTop_toBottomOf="@+id/activity_login_picture">
+        app:layout_constraintStart_toStartOf="@+id/loginPicture"
+        app:layout_constraintTop_toBottomOf="@+id/loginPicture">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/activity_login_email_input"
+                android:id="@+id/loginEmailInputText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/login_activity_label_email" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/activity_login_password_input_layout"
+        android:id="@+id/loginPasswordInput"
         android:layout_width="317dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        app:layout_constraintStart_toStartOf="@+id/activity_login_email_input_layout"
-        app:layout_constraintTop_toBottomOf="@+id/activity_login_email_input_layout"
+        app:layout_constraintStart_toStartOf="@+id/loginEmailInput"
+        app:layout_constraintTop_toBottomOf="@+id/loginEmailInput"
         app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/activity_login_password_input"
+                android:id="@+id/loginPasswordInputText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"

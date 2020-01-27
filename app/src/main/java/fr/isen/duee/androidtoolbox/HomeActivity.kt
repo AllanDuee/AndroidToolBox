@@ -23,7 +23,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     fun lifecycleButtonClick(){
-        activity_home_lifecycle_picture.setOnClickListener {
+        homeLifecyclePicture.setOnClickListener {
 
             val intent = Intent(this, LifeCycleActivity::class.java)
             startActivity(intent);
@@ -31,7 +31,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     fun saveButtonClick(){
-        activity_home_save_picture.setOnClickListener {
+        homeSavePicture.setOnClickListener {
 
             val intent = Intent(this, SaveDataActivity::class.java)
             startActivity(intent);
@@ -39,7 +39,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     fun permissionButtonClick(){
-        activity_home_permissions_picture.setOnClickListener {
+        homePermissionsPicture.setOnClickListener {
 
             val intent = Intent(this, PhoneInformationActivity::class.java)
             startActivity(intent);
@@ -49,7 +49,7 @@ class HomeActivity : AppCompatActivity() {
     fun disconnectButtonClick(){
         val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
 
-        activity_home_disconnect_button.setOnClickListener {
+        homeDisconnectButton.setOnClickListener {
             val editor: SharedPreferences.Editor = sharedPreferences.edit()
             editor.clear()
             editor.remove("email")

@@ -7,7 +7,7 @@ android:background="@color/colorRedDark"
 tools:context=".LifeCycleFragment">
 
     <TextView
-        android:id="@+id/fragment_lifecycle_title"
+        android:id="@+id/fragmentLifecycleTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -19,14 +19,14 @@ tools:context=".LifeCycleFragment">
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/fragment_lifecycle_text"
+        android:id="@+id/fragmentLifecycleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Fragment 1"
         android:textColor="@color/colorWhite"
         android:textSize="25dp"
-        app:layout_constraintEnd_toEndOf="@+id/fragment_lifecycle_title"
-        app:layout_constraintStart_toStartOf="@+id/fragment_lifecycle_title"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_lifecycle_title" />
+        app:layout_constraintEnd_toEndOf="@+id/fragmentLifecycleTitle"
+        app:layout_constraintStart_toStartOf="@+id/fragmentLifecycleTitle"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentLifecycleTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

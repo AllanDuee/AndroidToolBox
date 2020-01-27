@@ -9,7 +9,7 @@
     android:id="@+id/activity_phone_information">
 
     <TextView
-        android:id="@+id/activity_phone_information_title"
+        android:id="@+id/phoneInformationTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -21,60 +21,60 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/activity_phone_information_picture"
+        android:id="@+id/phoneInformationPicture"
         android:layout_width="126dp"
         android:layout_height="86dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_phone_information_title"
+        app:layout_constraintTop_toBottomOf="@+id/phoneInformationTitle"
         app:srcCompat="@android:drawable/ic_menu_camera" />
 
     <TextView
-        android:id="@+id/activity_phone_lat_title"
+        android:id="@+id/phoneInformationLat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:textColor="@color/colorBlack"
         android:text="@string/phone_information_activity_lat_title"
-        app:layout_constraintStart_toEndOf="@+id/activity_phone_information_picture"
-        app:layout_constraintTop_toTopOf="@+id/activity_phone_information_picture" />
+        app:layout_constraintStart_toEndOf="@+id/phoneInformationPicture"
+        app:layout_constraintTop_toTopOf="@+id/phoneInformationPicture" />
 
     <TextView
-        android:id="@+id/activity_phone_long_title"
+        android:id="@+id/phoneInformationLong"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/phone_information_activity_long_title"
         android:textColor="@color/colorBlack"
-        app:layout_constraintBottom_toBottomOf="@+id/activity_phone_information_picture"
-        app:layout_constraintStart_toStartOf="@+id/activity_phone_lat_title"
-        app:layout_constraintTop_toBottomOf="@+id/activity_phone_lat_title" />
+        app:layout_constraintBottom_toBottomOf="@+id/phoneInformationPicture"
+        app:layout_constraintStart_toStartOf="@+id/phoneInformationLat"
+        app:layout_constraintTop_toBottomOf="@+id/phoneInformationLat" />
 
     <TextView
-        android:id="@+id/activity_phone_lat_value"
+        android:id="@+id/phoneInformationLatValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:textColor="@color/colorBlack"
         android:textStyle="bold"
         android:text="textView"
-        app:layout_constraintStart_toEndOf="@+id/activity_phone_lat_title"
-        app:layout_constraintTop_toTopOf="@+id/activity_phone_lat_title" />
+        app:layout_constraintStart_toEndOf="@+id/phoneInformationLat"
+        app:layout_constraintTop_toTopOf="@+id/phoneInformationLat" />
 
     <TextView
-        android:id="@+id/activity_phone_long_value"
+        android:id="@+id/phoneInformationLongValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
         android:textStyle="bold"
         android:text="textView"
-        app:layout_constraintStart_toStartOf="@+id/activity_phone_lat_value"
-        app:layout_constraintTop_toTopOf="@+id/activity_phone_long_title" />
+        app:layout_constraintStart_toStartOf="@+id/phoneInformationLatValue"
+        app:layout_constraintTop_toTopOf="@+id/phoneInformationLong" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/activity_phone_contact_recyclerview"
+        android:id="@+id/contactRecyclerView"
         android:layout_width="415dp"
         android:layout_height="438dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_phone_information_picture" />
+        app:layout_constraintTop_toBottomOf="@+id/phoneInformationPicture" />
 </androidx.constraintlayout.widget.ConstraintLayout>

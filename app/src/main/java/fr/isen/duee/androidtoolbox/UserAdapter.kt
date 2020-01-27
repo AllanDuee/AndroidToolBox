@@ -3,7 +3,6 @@ package fr.isen.duee.androidtoolbox
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.contact.view.*
 
@@ -27,11 +26,11 @@ class UsersAdapter(val users: List<User>, val clickListener: (User) -> Unit) : R
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(user: User, clickListener: (User) -> Unit) {
-            itemView.contact_firstName.text = user.firstName
-            itemView.contact_lastName.text = user.lastName
-            itemView.contact_number_value.text = user.number
-            itemView.contact_birthday_value.text = user.dateOfBirth
-            itemView.contact_email_value.text = user.email
+            itemView.contactFirstname.text = user.firstName
+            itemView.contactLastname.text = user.lastName
+            itemView.contactPhoneNumberValue.text = user.number
+            itemView.contactDateOfBirthValue.text = user.dateOfBirth
+            itemView.contactEmailValue.text = user.email
             itemView.setOnClickListener { clickListener(user)}
         }
        /* val firstName: TextView = view.contact_firstName
