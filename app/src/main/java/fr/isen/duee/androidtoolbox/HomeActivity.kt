@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
 
-    private val sharedPrefFile = "kotlinsharedpreference"
+    private val sharedPrefFile = "sharedPrefFile"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

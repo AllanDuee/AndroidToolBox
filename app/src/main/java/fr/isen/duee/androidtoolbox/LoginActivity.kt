@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
-    private val sharedPrefFile = "kotlinsharedpreference"
+    private val sharedPrefFile = "sharedPrefFile"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,10 +68,10 @@ class LoginActivity : AppCompatActivity() {
             }
             else {
                 if(identifiant.equals("admin")) {
-                    Toast.makeText(this@LoginActivity, "Mot de passe incorect", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity, getString(R.string.incorrect_password), Toast.LENGTH_SHORT).show()
                 }
                 else {
-                    Toast.makeText(this@LoginActivity, "Identifiant incorect", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity, getString(R.string.incorrect_pseudo), Toast.LENGTH_SHORT).show()
                 }
             }
         }

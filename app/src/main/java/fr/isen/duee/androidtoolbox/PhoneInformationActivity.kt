@@ -47,8 +47,6 @@ class PhoneInformationActivity : AppCompatActivity() {
     }
 
     fun loadContacts() {
-        var builder = StringBuilder()
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(
                 Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(arrayOf(Manifest.permission.READ_CONTACTS),
@@ -56,9 +54,6 @@ class PhoneInformationActivity : AppCompatActivity() {
             //callback onRequestPermissionsResult
         } else {
             getContacts()
-            Log.d("TAG", "contact = " + builder.toString())
-
-           // listContacts.text = builder.toString()
         }
     }
 
@@ -94,7 +89,7 @@ class PhoneInformationActivity : AppCompatActivity() {
                 }
             }
         } else {
-            Toast.makeText(this, "No contacts available!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.no_contact_available), Toast.LENGTH_SHORT).show()
         }
         cursor.close()
         return builder
@@ -193,17 +188,17 @@ class PhoneInformationActivity : AppCompatActivity() {
     fun popUp() {
         val builder = AlertDialog.Builder(this@PhoneInformationActivity)
 
-        builder.setTitle("Veuillez séléctionner un mode :")
+        builder.setTitle(getString(R.string.phone_information_activity_popup_title))
         builder.setNegativeButton("Gallery"){_,_ ->
-            Toast.makeText(applicationContext,"You have choose the Gallery",Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext,getString(R.string.phone_information_activity_popup_gallery),Toast.LENGTH_SHORT).show()
             checkAndOpenGallery()
         }
         builder.setPositiveButton("Camera"){_,_ ->
-            Toast.makeText(applicationContext,"You have choose the Camera",Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext,getString(R.string.phone_information_activity_popup_camera),Toast.LENGTH_SHORT).show()
             checkAndOpenCamera()
         }
         builder.setNeutralButton("Cancel"){_,_ ->
-            Toast.makeText(applicationContext,"You cancelled the dialog.",Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext,getString(R.string.phone_information_activity_popup_cancel),Toast.LENGTH_SHORT).show()
         }
 
         val dialog: AlertDialog = builder.create()
@@ -221,7 +216,7 @@ class PhoneInformationActivity : AppCompatActivity() {
                 }
                 else{
                     //permission from popup denied
-                    Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.permission_denied), Toast.LENGTH_SHORT).show()
                 }
             }
             PERMISSION_CODE_CAMERA -> {
@@ -232,7 +227,7 @@ class PhoneInformationActivity : AppCompatActivity() {
                 }
                 else{
                     //permission from popup denied
-                    Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.permission_denied), Toast.LENGTH_SHORT).show()
                 }
             }
             PERMISSIONS_REQUEST_READ_CONTACTS -> {
@@ -240,7 +235,7 @@ class PhoneInformationActivity : AppCompatActivity() {
                     if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                         loadContacts()
                     } else {
-                        Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.permission_denied), Toast.LENGTH_SHORT).show()
                     }
                 }
             }

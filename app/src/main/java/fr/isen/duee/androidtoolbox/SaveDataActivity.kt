@@ -30,7 +30,7 @@ class SaveDataActivity : AppCompatActivity() {
     fun dateButtonClick() {
         val textview_date = this.saveDataDatePickerZone
 
-        textview_date!!.setOnClickListener(object : View.OnClickListener {
+        textview_date?.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
                 DatePickerDialog(this@SaveDataActivity,
                     setCalendar(),
@@ -49,15 +49,15 @@ class SaveDataActivity : AppCompatActivity() {
 
             val user = User( lastName, firstName, dateOfBirth )
             File(cacheDir.absolutePath + "userInfo.json").writeText(Gson().toJson(user))
-            Toast.makeText(this@SaveDataActivity, "L'utilisateur a été sauvegardé", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@SaveDataActivity, getString(R.string.user_saved), Toast.LENGTH_SHORT).show()
         }
     }
 
     fun readUserInfoButton() {
         saveDataReadButton.setOnClickListener {
-            var user = User( "", "", "" )
+            //var user = User( "", "", "" )
 
-            user = Gson().fromJson(FileReader(cacheDir.absolutePath + "userInfo.json"), User::class.java)
+           var user = Gson().fromJson(FileReader(cacheDir.absolutePath + "userInfo.json"), User::class.java)
 
             val firstNameUser = user.firstName
             val lastNameUser = user.lastName
@@ -71,10 +71,10 @@ class SaveDataActivity : AppCompatActivity() {
     fun popUp(lastName: String, firstName: String, dateOfBirth: String, ageUser: Long) {
         val builder = AlertDialog.Builder(this@SaveDataActivity)
 
-        builder.setTitle("Informations du Json")
+        builder.setTitle(getString(R.string.json_info_title))
         builder.setMessage("Voici les informations du Json : \n\nNom: $lastName\nPrénom: $firstName\nDate de Naissance: $dateOfBirth\n\nAge : $ageUser ans")
-        builder.setNegativeButton("Cancel"){_,_ ->
-            Toast.makeText(applicationContext,"You cancelled the dialog.",Toast.LENGTH_SHORT).show()
+        builder.setNegativeButton(getString(R.string.json_cancel_button)){_,_ ->
+            Toast.makeText(applicationContext,getString(R.string.json_cancel_dialog),Toast.LENGTH_SHORT).show()
         }
 
         val dialog: AlertDialog = builder.create()
@@ -84,7 +84,7 @@ class SaveDataActivity : AppCompatActivity() {
     fun updateDateInView() {
         val myFormat = "MM/dd/yyyy" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.US)
-        saveDataDatePickerZone!!.text = sdf.format(cal.getTime())
+        saveDataDatePickerZone?.text = sdf.format(cal.getTime())
     }
 
     fun setCalendar () :  DatePickerDialog.OnDateSetListener {

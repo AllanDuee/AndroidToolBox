@@ -25,7 +25,7 @@ class LifeCycleActivity : AppCompatActivity() {
         sliderBetweenFragment()
         changeFrangmentButtonClick()
 
-        notification("onCreate", true)
+        notification(getString(R.string.on_create), true)
     }
 
     fun sliderBetweenFragment() {
@@ -72,33 +72,33 @@ class LifeCycleActivity : AppCompatActivity() {
             lifecycleTitle.text = message
         }
         else {
-            Log.d("TAG", message)
+            Log.d(getString(R.string.tag), message)
         }
     }
 
     override fun onStart() {
         super.onStart()
-        notification("onStart", true)
+        notification(getString(R.string.on_start), true)
     }
 
     override fun onResume() {
         super.onResume()
-        notification("onResume", true)
+        notification(getString(R.string.on_resume), true)
     }
 
     override fun onPause() {
         super.onPause()
-        notification("onPause", false)
+        notification(getString(R.string.on_pause), false)
     }
 
     override fun onStop() {
         super.onStop()
-        notification("onStop", false)
+        notification(getString(R.string.on_stop), false)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        notification("onDestroy", false)
-        Toast.makeText(this@LifeCycleActivity, "onDestroy", Toast.LENGTH_SHORT).show()
+        notification(getString(R.string.on_destroy), false)
+        Toast.makeText(this@LifeCycleActivity, getString(R.string.on_destroy), Toast.LENGTH_SHORT).show()
     }
 }

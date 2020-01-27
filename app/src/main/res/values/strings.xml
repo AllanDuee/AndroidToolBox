@@ -1,5 +1,21 @@
 <resources>
     <string name="app_name">AndroidToolBox</string>
+    <string name="on_create">onCreate</string>
+    <string name="on_start">onStart</string>
+    <string name="on_pause">onPause</string>
+    <string name="on_resume">onResume</string>
+    <string name="on_stop">onStop</string>
+    <string name="on_destroy">onDestroy</string>
+    <string name="tag">TAG</string>
+    <string name="incorrect_password">Mot de passe incorrect</string>
+    <string name="incorrect_pseudo">identifiant incorrect</string>
+    <string name="no_contact_available">Pas de contact Disponible</string>
+    <string name="permission_denied">Permission refusé</string>
+    <string name="user_saved">"L'utilisateur a été sauvegardé"</string>
+    <string name="json_info_title">Information du Json : </string>
+    <string name="json_cancel_dialog">Vous avez fermé la boite de dialogue</string>
+    <string name="json_cancel_button">Fermer</string>
+
     <string name="login_activity_title">Connexion</string>
     <string name="login_activity_label_email">Identifiant</string>
     <string name="login_activity_label_password">Mot de Passe</string>
@@ -20,6 +36,10 @@
     <string name="phone_information_activity_title">Accès aux informations Android</string>
     <string name="phone_information_activity_lat_title">Lattitude : </string>
     <string name="phone_information_activity_long_title">Longitude : </string>
+    <string name="phone_information_activity_popup_title">Veuillez séléctionner un mode :</string>
+    <string name="phone_information_activity_popup_gallery">Vous avez choisis la Gallery</string>
+    <string name="phone_information_activity_popup_camera">Vous avez choisis la Camera</string>
+    <string name="phone_information_activity_popup_cancel">Vous avez fermé la Popup</string>
     <string name="contact_phone_number_title">Numéro de Téléphone : </string>
     <string name="contact_email_title">Adresse Email : </string>
     <string name="contact_birthday_title">Date de Naissance : </string>
