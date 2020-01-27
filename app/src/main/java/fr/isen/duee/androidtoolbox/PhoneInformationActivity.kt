@@ -1,12 +1,16 @@
 package fr.isen.duee.androidtoolbox
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.ContentResolver
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Location
+import android.location.LocationListener
+import android.location.LocationManager
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -15,22 +19,44 @@ import android.provider.ContactsContract
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_phone_information.*
 
-class PhoneInformationActivity : AppCompatActivity() {
+class PhoneInformationActivity : AppCompatActivity(), LocationListener {
+    override fun onLocationChanged(location: Location?) {
+        phoneInformationLatValue.text = location?.latitude.toString()
+        phoneInformationLongValue.text = location?.longitude.toString()
+    }
+
+    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
+
+    }
+
+    override fun onProviderEnabled(provider: String?) {
+
+    }
+
+    override fun onProviderDisabled(provider: String?) {
+
+    }
 
     companion object {
-        private val IMAGE_PICK_CODE_GALLERY = 1000;
-        private val PERMISSION_CODE_GALLERY = 1001;
-        private val IMAGE_CAPTURE_CODE_CAMERA = 1002;
-        private val PERMISSION_CODE_CAMERA = 1003;
-        val PERMISSIONS_REQUEST_READ_CONTACTS = 100;
+        private val IMAGE_PICK_CODE_GALLERY = 1000
+        private val PERMISSION_CODE_GALLERY = 1001
+        private val IMAGE_CAPTURE_CODE_CAMERA = 1002
+        private val PERMISSION_CODE_CAMERA = 1003
+        private val PERMISSIONS_REQUEST_READ_CONTACTS = 100
+        private val PERMISSIONS_REQUEST_FINE_LOCATION = 101
+        private val PERMISSIONS_REQUEST_COARSE_LOCATION = 102
     }
     var image_uri: Uri? = null
 
     val contacts = mutableListOf<Contact>()
 
+    private var locationManager : LocationManager? = null
+
+    @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_phone_information)
@@ -41,18 +67,49 @@ class PhoneInformationActivity : AppCompatActivity() {
 
         loadContacts()
 
+        loadLocation()
+
         contactRecyclerView.layoutManager = LinearLayoutManager(this)
         contactRecyclerView.adapter = ContactAdapter(contacts, { contact -> contactItemClicked(contact)})
 
     }
 
-    fun loadContacts() {
+    @SuppressLint("MissingPermission")
+    fun  getLocation() {
+        locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?
+
+        locationManager?.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1f, this)
+
+        val location = locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+        if (location != null) {
+            phoneInformationLatValue.text = location.latitude.toString()
+            phoneInformationLongValue.text = location.longitude.toString()
+        }
+    }
+
+    fun loadLocation() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(
-                Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(arrayOf(Manifest.permission.READ_CONTACTS),
-                PERMISSIONS_REQUEST_READ_CONTACTS)
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(
+            Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                PERMISSIONS_REQUEST_FINE_LOCATION)
+            requestPermissions(arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION),
+                PERMISSIONS_REQUEST_COARSE_LOCATION)
             //callback onRequestPermissionsResult
         } else {
+            getLocation()
+        }
+    }
+
+    fun loadContacts() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if(checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(arrayOf(Manifest.permission.READ_CONTACTS), PERMISSIONS_REQUEST_READ_CONTACTS)
+                //callback onRequestPermissionsResult
+            } else {
+                getContacts()
+            }
+        }  else {
             getContacts()
         }
     }
@@ -237,6 +294,20 @@ class PhoneInformationActivity : AppCompatActivity() {
                     } else {
                         Toast.makeText(this, getString(R.string.permission_denied), Toast.LENGTH_SHORT).show()
                     }
+                }
+            }
+            PERMISSIONS_REQUEST_FINE_LOCATION -> {
+                if (grantResults.size >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    getLocation()
+                } else {
+                    Toast.makeText(this, getString(R.string.permission_denied), Toast.LENGTH_SHORT).show()
+                }
+            }
+            PERMISSIONS_REQUEST_COARSE_LOCATION -> {
+                if (grantResults.size >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    getLocation()
+                } else {
+                    Toast.makeText(this, getString(R.string.permission_denied), Toast.LENGTH_SHORT).show()
                 }
             }
         }
