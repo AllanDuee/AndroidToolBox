@@ -20,18 +20,18 @@ class LoginActivity : AppCompatActivity() {
         loginButtonClick()
     }
 
-    fun checkPreferences() {
+    private fun checkPreferences() {
         val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
 
         val sharedEmailValue = sharedPreferences.getString("email","defaultemail")
         val sharedPasswordValue = sharedPreferences.getString("password","defaultpassword")
 
-        if(sharedEmailValue.equals("defaultemail") && sharedPasswordValue.equals("defaultpassword")){
+        if(sharedEmailValue == "defaultemail" && sharedPasswordValue == "defaultpassword"){
             loginEmailInputText.setText("")
             loginPasswordInputText.setText("")
 
         }else{
-            if(sharedEmailValue.equals("admin") && sharedPasswordValue.equals("123")) {
+            if(sharedEmailValue == "admin" && sharedPasswordValue == "123") {
 
                 val message = "$sharedEmailValue est connecté"
                 Toast.makeText(this@LoginActivity, message, Toast.LENGTH_SHORT).show()
@@ -43,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
-    fun loginButtonClick() {
+    private fun loginButtonClick() {
         loginValidateButton.setOnClickListener {
 
             val editor:SharedPreferences.Editor =  this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE).edit()
@@ -56,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
             editor.apply()
             editor.commit()
 
-            if(identifiant.equals("admin") && password.equals("123")) {
+            if(identifiant == "admin" && password == "123") {
 
                 val message = "$identifiant est connecté"
                 Toast.makeText(this@LoginActivity, message, Toast.LENGTH_SHORT).show()
@@ -67,7 +67,7 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(intent);
             }
             else {
-                if(identifiant.equals("admin")) {
+                if(identifiant == "admin") {
                     Toast.makeText(this@LoginActivity, getString(R.string.incorrect_password), Toast.LENGTH_SHORT).show()
                 }
                 else {

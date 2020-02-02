@@ -17,9 +17,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.provider.MediaStore
-import android.util.Log
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_phone_information.*
 
@@ -119,36 +117,38 @@ class PhoneInformationActivity : AppCompatActivity(), LocationListener {
         val resolver: ContentResolver = contentResolver;
         val cursor = resolver.query(ContactsContract.Contacts.CONTENT_URI, null, null, null,
             null)
+        cursor?.let {
+            if (it.count > 0) {
+                while (it.moveToNext()) {
+                    val id = it.getString(it.getColumnIndex(ContactsContract.Contacts._ID))
+                    val name = it.getString(it.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
+                    val phoneNumber = (it.getString(
+                        it.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))).toInt()
 
-        if (cursor.count > 0) {
-            while (cursor.moveToNext()) {
-                val id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID))
-                val name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
-                val phoneNumber = (cursor.getString(
-                    cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))).toInt()
-
-                if (phoneNumber > 0) {
-                    val cursorPhone = contentResolver.query(
-                        ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-                        null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=?", arrayOf(id), null)
-
-                    if(cursorPhone.count > 0) {
-                        while (cursorPhone.moveToNext()) {
-                            val phoneNumValue = cursorPhone.getString(
-                                cursorPhone.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
-                            builder.append("Contact: ").append(name).append(", Phone Number: ").append(
-                                phoneNumValue).append("\n\n")
-                            contacts.add(Contact(name,phoneNumValue))
-                            //Log.e("Name ===>",phoneNumValue);
+                    if (phoneNumber > 0) {
+                        val cursorPhone = contentResolver.query(
+                            ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                            null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=?", arrayOf(id), null)
+                        cursorPhone?.let {
+                            if(it.count > 0) {
+                                while (it.moveToNext()) {
+                                    val phoneNumValue = it.getString(
+                                        it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+                                    builder.append("Contact: ").append(name).append(", Phone Number: ").append(
+                                        phoneNumValue).append("\n\n")
+                                    contacts.add(Contact(name,phoneNumValue))
+                                    //Log.e("Name ===>",phoneNumValue);
+                                }
+                            }
+                            it.close()
                         }
                     }
-                    cursorPhone.close()
                 }
+            } else {
+                Toast.makeText(this, getString(R.string.no_contact_available), Toast.LENGTH_SHORT).show()
             }
-        } else {
-            Toast.makeText(this, getString(R.string.no_contact_available), Toast.LENGTH_SHORT).show()
+            cursor.close()
         }
-        cursor.close()
         return builder
     }
 

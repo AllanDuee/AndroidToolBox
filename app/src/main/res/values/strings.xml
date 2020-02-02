@@ -15,6 +15,7 @@
     <string name="json_info_title">Information du Json : </string>
     <string name="json_cancel_dialog">Vous avez fermé la boite de dialogue</string>
     <string name="json_cancel_button">Fermer</string>
+    <string name="error_api">Erreur à la lecture de l API</string>
 
     <string name="login_activity_title">Connexion</string>
     <string name="login_activity_label_email">Identifiant</string>

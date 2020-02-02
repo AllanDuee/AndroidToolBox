@@ -18,6 +18,7 @@ class HomeActivity : AppCompatActivity() {
         lifecycleButtonClick()
         saveButtonClick()
         permissionButtonClick()
+        webServicesClick()
 
         disconnectButtonClick()
     }
@@ -42,6 +43,14 @@ class HomeActivity : AppCompatActivity() {
         homePermissionsPicture.setOnClickListener {
 
             val intent = Intent(this, PhoneInformationActivity::class.java)
+            startActivity(intent);
+        }
+    }
+
+    fun webServicesClick(){
+        homeWebservicesPicture.setOnClickListener {
+
+            val intent = Intent(this, WebServicesActivity::class.java)
             startActivity(intent);
         }
     }
