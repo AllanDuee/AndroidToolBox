@@ -41,6 +41,7 @@
     <string name="phone_information_activity_popup_gallery">Vous avez choisis la Gallery</string>
     <string name="phone_information_activity_popup_camera">Vous avez choisis la Camera</string>
     <string name="phone_information_activity_popup_cancel">Vous avez fermé la Popup</string>
+    <string name="phone_information_long_lat_permission">Lattitude : %1$f\n\nLongitude : %2$f</string>
     <string name="contact_phone_number_title">Numéro de Téléphone : </string>
     <string name="contact_email_title">Adresse Email : </string>
     <string name="contact_birthday_title">Date de Naissance : </string>

@@ -29,53 +29,25 @@
         app:layout_constraintTop_toBottomOf="@+id/phoneInformationTitle"
         app:srcCompat="@android:drawable/ic_menu_camera" />
 
-    <TextView
-        android:id="@+id/phoneInformationLat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:textColor="@color/colorBlack"
-        android:text="@string/phone_information_activity_lat_title"
-        app:layout_constraintStart_toEndOf="@+id/phoneInformationPicture"
-        app:layout_constraintTop_toTopOf="@+id/phoneInformationPicture" />
-
-    <TextView
-        android:id="@+id/phoneInformationLong"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/phone_information_activity_long_title"
-        android:textColor="@color/colorBlack"
-        app:layout_constraintBottom_toBottomOf="@+id/phoneInformationPicture"
-        app:layout_constraintStart_toStartOf="@+id/phoneInformationLat"
-        app:layout_constraintTop_toBottomOf="@+id/phoneInformationLat" />
-
-    <TextView
-        android:id="@+id/phoneInformationLatValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:textColor="@color/colorBlack"
-        android:textStyle="bold"
-        android:text="textView"
-        app:layout_constraintStart_toEndOf="@+id/phoneInformationLat"
-        app:layout_constraintTop_toTopOf="@+id/phoneInformationLat" />
-
-    <TextView
-        android:id="@+id/phoneInformationLongValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorBlack"
-        android:textStyle="bold"
-        android:text="textView"
-        app:layout_constraintStart_toStartOf="@+id/phoneInformationLatValue"
-        app:layout_constraintTop_toTopOf="@+id/phoneInformationLong" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/contactRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneInformationPicture" />
+
+    <TextView
+        android:id="@+id/phoneInformationLatLongValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="TextView"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/phoneInformationPicture"
+        app:layout_constraintStart_toEndOf="@+id/phoneInformationPicture"
+        app:layout_constraintTop_toTopOf="@+id/phoneInformationPicture" />
 </androidx.constraintlayout.widget.ConstraintLayout>

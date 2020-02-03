@@ -82,7 +82,7 @@ class SaveDataActivity : AppCompatActivity() {
     }
 
     fun updateDateInView() {
-        val myFormat = "MM/dd/yyyy" // mention the format you need
+        val myFormat = "dd/MM/yyyy" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         saveDataDatePickerZone?.text = sdf.format(cal.getTime())
     }

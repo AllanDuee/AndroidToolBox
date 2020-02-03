@@ -18,13 +18,13 @@ import android.os.Bundle
 import android.provider.ContactsContract
 import android.provider.MediaStore
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_phone_information.*
 
 class PhoneInformationActivity : AppCompatActivity(), LocationListener {
     override fun onLocationChanged(location: Location?) {
-        phoneInformationLatValue.text = location?.latitude.toString()
-        phoneInformationLongValue.text = location?.longitude.toString()
+        phoneInformationLatLongValue.text = getString(R.string.phone_information_long_lat_permission,  location?.latitude, location?.longitude)
     }
 
     override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
@@ -37,6 +37,11 @@ class PhoneInformationActivity : AppCompatActivity(), LocationListener {
 
     override fun onProviderDisabled(provider: String?) {
 
+    }
+
+    override fun onStop() {
+        super.onStop()
+        locationManager?.removeUpdates(this)
     }
 
     companion object {
@@ -61,11 +66,9 @@ class PhoneInformationActivity : AppCompatActivity(), LocationListener {
 
         imageClick()
 
-        addContacts()
-
         loadContacts()
 
-        loadLocation()
+        addContacts()
 
         contactRecyclerView.layoutManager = LinearLayoutManager(this)
         contactRecyclerView.adapter = ContactAdapter(contacts, { contact -> contactItemClicked(contact)})
@@ -80,21 +83,23 @@ class PhoneInformationActivity : AppCompatActivity(), LocationListener {
 
         val location = locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER)
         if (location != null) {
-            phoneInformationLatValue.text = location.latitude.toString()
-            phoneInformationLongValue.text = location.longitude.toString()
+            phoneInformationLatLongValue.text = getString(R.string.phone_information_long_lat_permission,  location?.latitude, location?.longitude)
         }
     }
 
     fun loadLocation() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(
-                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(
-            Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                PERMISSIONS_REQUEST_FINE_LOCATION)
-            requestPermissions(arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION),
-                PERMISSIONS_REQUEST_COARSE_LOCATION)
-            //callback onRequestPermissionsResult
-        } else {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                if (checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(
+                    Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                        PERMISSIONS_REQUEST_FINE_LOCATION)
+                    requestPermissions(arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION),
+                        PERMISSIONS_REQUEST_COARSE_LOCATION)
+                    //callback onRequestPermissionsResult
+                } else {
+                    getLocation()
+                }
+        else {
             getLocation()
         }
     }
@@ -103,12 +108,14 @@ class PhoneInformationActivity : AppCompatActivity(), LocationListener {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if(checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(arrayOf(Manifest.permission.READ_CONTACTS), PERMISSIONS_REQUEST_READ_CONTACTS)
-                //callback onRequestPermissionsResult
+                loadLocation()
             } else {
                 getContacts()
+                loadLocation()
             }
         }  else {
             getContacts()
+            loadLocation()
         }
     }
 
@@ -137,7 +144,6 @@ class PhoneInformationActivity : AppCompatActivity(), LocationListener {
                                     builder.append("Contact: ").append(name).append(", Phone Number: ").append(
                                         phoneNumValue).append("\n\n")
                                     contacts.add(Contact(name,phoneNumValue))
-                                    //Log.e("Name ===>",phoneNumValue);
                                 }
                             }
                             it.close()
