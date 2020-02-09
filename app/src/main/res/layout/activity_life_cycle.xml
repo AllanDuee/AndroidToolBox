@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context=".LifeCycleActivity">
 
     <TextView
@@ -11,9 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:text="Activity LifeCycle"
-        android:textSize="30dp"
-        android:textColor="@color/colorBlack"
+        android:text="@string/activity_lifecycle_title"
+        android:textSize="30sp"
+        android:textColor="@color/colorBlueDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lifecycleTitle"></FrameLayout>
+        app:layout_constraintTop_toBottomOf="@+id/lifecycleTitle" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/lifecycleViewPager"
@@ -43,7 +44,7 @@
         android:layout_width="201dp"
         android:layout_height="46dp"
         android:layout_marginTop="32dp"
-        android:background="@color/colorRedLight"
+        android:background="@color/colorBlueLight"
         android:text="@string/lifecycle_activity_button"
         android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"

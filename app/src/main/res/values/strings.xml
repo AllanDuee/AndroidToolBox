@@ -54,5 +54,19 @@
     <string name="fragment_specific_contact_number_title">Numéro de Téléphone : </string>
     <string name="fragment_specific_contact_birthday_title">Date de Naissance : </string>
     <string name="fragment_specific_contact_button_go_back">Retour</string>
+    <string name="activity_lifecycle_title">Activity LifeCycle</string>
+    <string name="activity_save_data_empty_date_picker">--/--/----</string>
+    <string name="fragment_lifecycle_page_title">Fragment LifeCycle</string>
+    <string name="fragment_lifecycle_fragment_one_title">Fragment 1</string>
+    <string name="contact_title">Name</string>
+    <string name="second_fragment_lifecycle_title">Second Fragment LifeCycle</string>
+    <string name="fragment_life_cycle_second_fragment_two_title">Fragment 2</string>
+    <string name="cybersecyrity_class_logo">Cybersecyrity class logo</string>
+    <string name="life_cycle_icon">Life Cycle Icon</string>
+    <string name="save_data_icon">Save Data Icon</string>
+    <string name="permissions_icon">Permissions Icon</string>
+    <string name="webservices_icon">Webservices Icon</string>
+    <string name="logout_icon">Logout Icon</string>
+    <string name="camera_or_gallery_picture">Camera or Gallery picture</string>
 
 </resources>

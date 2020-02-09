@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context=".SaveDataActivity">
 
     <TextView
@@ -12,8 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/save_data_activity_title"
-        android:textColor="@color/colorBlack"
-        android:textSize="25dp"
+        android:textColor="@color/colorBlueDark"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,12 +26,14 @@
         android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:textColorHint="@color/colorBlueDark"
         app:layout_constraintTop_toBottomOf="@+id/saveDataTitle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/saveDataLastnameInputText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorBlueLight"
             android:hint="@string/save_data_activity_lastname" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -41,12 +44,14 @@
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:textColorHint="@color/colorBlueDark"
         app:layout_constraintTop_toBottomOf="@+id/saveDataLastnameInput">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/saveDataFirstnameInputText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorBlueLight"
             android:hint="@string/save_data_activity_firstname" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,9 +60,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:text="--/--/----"
-        android:textColor="@color/colorRedDark"
-        android:textSize="20dp"
+        android:text="@string/activity_save_data_empty_date_picker"
+        android:textColor="@color/colorBlueDark"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/saveDataFirstnameInput"
         app:layout_constraintStart_toEndOf="@+id/saveDataDateOfBirthTitle"
         app:layout_constraintTop_toBottomOf="@+id/saveDataFirstnameInput" />
@@ -67,8 +72,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/save_data_activity_date_naissance"
-        android:textColor="@color/colorBlack"
-        android:textSize="20dp"
+        android:textColor="@color/colorBlueDark"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/saveDataFirstnameInput"
         app:layout_constraintTop_toTopOf="@+id/saveDataDatePickerZone" />
 
@@ -77,7 +82,7 @@
         android:layout_width="188dp"
         android:layout_height="48dp"
         android:layout_marginTop="64dp"
-        android:background="@color/colorRedLight"
+        android:background="@color/colorBlueLight"
         android:text="@string/save_data_activity_button_save"
         android:textColor="@color/colorWhite"
         android:textSize="15sp"

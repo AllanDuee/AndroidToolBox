@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="@color/colorWhite"
     tools:context=".HomeActivity">
 
     <ImageView
         android:id="@+id/homeLogo"
-        android:layout_width="141dp"
-        android:layout_height="53dp"
+        android:layout_width="214dp"
+        android:layout_height="85dp"
         android:layout_marginTop="8dp"
-        android:src="@drawable/isenlogo"
+        android:src="@drawable/cyberlogo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/cybersecyrity_class_logo" />
 
     <TextView
         android:id="@+id/homeTitle"
@@ -23,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/home_activity_title"
-        android:textColor="@color/colorGrey"
+        android:textColor="@color/colorBlueDark"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="@+id/homeLogo"
         app:layout_constraintStart_toStartOf="@+id/homeLogo"
@@ -34,24 +35,26 @@
         android:layout_width="130dp"
         android:layout_height="110dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:background="@color/colorRedLight"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorBlueLight"
         android:padding="25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/homeTitle"
-        app:srcCompat="@android:drawable/stat_notify_chat" />
+        app:srcCompat="@android:drawable/stat_notify_chat"
+        android:contentDescription="@string/life_cycle_icon" />
 
     <ImageView
         android:id="@+id/homeSavePicture"
         android:layout_width="130dp"
         android:layout_height="110dp"
         android:layout_marginEnd="32dp"
-        android:background="@color/colorRedLight"
+        android:background="@color/colorBlueLight"
         android:padding="25dp"
         app:layout_constraintBottom_toBottomOf="@+id/homeLifecyclePicture"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/homeLifecyclePicture"
-        app:srcCompat="@android:drawable/stat_notify_sdcard" />
+        app:srcCompat="@android:drawable/stat_notify_sdcard"
+        android:contentDescription="@string/save_data_icon" />
 
     <ImageView
         android:id="@+id/homePermissionsPicture"
@@ -60,21 +63,23 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:padding="25dp"
-        android:background="@color/colorRedLight"
+        android:background="@color/colorBlueLight"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/homeLifecycleTitle"
-        app:srcCompat="@android:drawable/stat_sys_speakerphone" />
+        app:srcCompat="@android:drawable/stat_sys_speakerphone"
+        android:contentDescription="@string/permissions_icon" />
 
     <ImageView
         android:id="@+id/homeWebservicesPicture"
         android:layout_width="130dp"
         android:layout_height="110dp"
-        android:background="@color/colorRedLight"
+        android:background="@color/colorBlueLight"
         android:padding="25dp"
         app:layout_constraintBottom_toBottomOf="@+id/homePermissionsPicture"
         app:layout_constraintEnd_toEndOf="@+id/homeSavePicture"
         app:layout_constraintTop_toTopOf="@+id/homePermissionsPicture"
-        app:srcCompat="@android:drawable/stat_sys_download_done" />
+        app:srcCompat="@android:drawable/stat_sys_download_done"
+        android:contentDescription="@string/webservices_icon" />
 
     <TextView
         android:id="@+id/homeLifecycleTitle"
@@ -83,6 +88,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/home_activity_button_top_left_name"
         android:textSize="24sp"
+        android:textColor="@color/colorBlueDark"
         app:layout_constraintEnd_toEndOf="@+id/homeLifecyclePicture"
         app:layout_constraintStart_toStartOf="@+id/homeLifecyclePicture"
         app:layout_constraintTop_toBottomOf="@+id/homeLifecyclePicture" />
@@ -94,6 +100,7 @@
         android:layout_marginTop="16dp"
         android:textSize="24sp"
         android:text="@string/home_activity_button_top_right_name"
+        android:textColor="@color/colorBlueDark"
         app:layout_constraintEnd_toEndOf="@+id/homeSavePicture"
         app:layout_constraintStart_toStartOf="@+id/homeSavePicture"
         app:layout_constraintTop_toBottomOf="@+id/homeSavePicture" />
@@ -105,6 +112,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/home_activity_button_bottom_left_name"
         android:textSize="24sp"
+        android:textColor="@color/colorBlueDark"
         app:layout_constraintEnd_toEndOf="@+id/homePermissionsPicture"
         app:layout_constraintStart_toStartOf="@+id/homePermissionsPicture"
         app:layout_constraintTop_toBottomOf="@+id/homePermissionsPicture" />
@@ -116,6 +124,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/home_activity_button_bottom_right_name"
         android:textSize="24sp"
+        android:textColor="@color/colorBlueDark"
         app:layout_constraintEnd_toEndOf="@+id/homeWebservicesPicture"
         app:layout_constraintStart_toStartOf="@+id/homeWebservicesPicture"
         app:layout_constraintTop_toBottomOf="@+id/homeWebservicesPicture" />
@@ -124,10 +133,12 @@
         android:id="@+id/homeDisconnectButton"
         android:layout_width="107dp"
         android:layout_height="97dp"
-        android:layout_marginTop="8dp"
+        android:tint="@color/colorBlack"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/homePermissionsTitle"
-        app:srcCompat="@android:drawable/ic_lock_power_off" />
+        app:srcCompat="@android:drawable/ic_lock_power_off"
+        android:contentDescription="@string/logout_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

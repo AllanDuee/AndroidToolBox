@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context=".LoginActivity">
 
     <ImageView
@@ -14,14 +15,15 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/loginTitle"
-    app:srcCompat="@drawable/isenlogo"/>
+    app:srcCompat="@drawable/cyberlogo"
+        android:contentDescription="@string/cybersecyrity_class_logo" />
 
     <Button
     android:id="@+id/loginValidateButton"
     android:layout_width="134dp"
     android:layout_height="57dp"
     android:layout_marginTop="64dp"
-    android:background="@color/colorRedLight"
+    android:background="@color/colorBlueLight"
     android:text="@string/login_activity_button_validForm"
     android:textColor="@color/colorWhite"
     android:textSize="20sp"
@@ -36,7 +38,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="32dp"
     android:text="@string/login_activity_title"
-    android:textColor="@color/colorBlack"
+    android:textColor="@color/colorBlueDark"
     android:textSize="30sp"
     android:textStyle="bold"
     app:layout_constraintEnd_toEndOf="parent"
@@ -49,12 +51,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         app:layout_constraintStart_toStartOf="@+id/loginPicture"
-        app:layout_constraintTop_toBottomOf="@+id/loginPicture">
+        app:layout_constraintTop_toBottomOf="@+id/loginPicture"
+        android:textColorHint="@color/colorBlueDark">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/loginEmailInputText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorBlueLight"
                 android:hint="@string/login_activity_label_email" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,14 +69,16 @@
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="@+id/loginEmailInput"
         app:layout_constraintTop_toBottomOf="@+id/loginEmailInput"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        android:textColorHint="@color/colorBlueDark">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/loginPasswordInputText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:hint="@string/login_activity_label_password" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/loginPasswordInputText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/login_activity_label_password"
+            android:inputType="textPassword"
+            android:textColor="@color/colorBlueLight" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
