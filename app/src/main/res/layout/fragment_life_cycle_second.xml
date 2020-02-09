@@ -4,7 +4,7 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:background="@color/colorRedDark"
-tools:context=".LifeCycleSecondFragment">
+tools:context=".lifecycle.LifeCycleSecondFragment">
 
     <TextView
         android:id="@+id/secondFragmentLifecycleTitle"

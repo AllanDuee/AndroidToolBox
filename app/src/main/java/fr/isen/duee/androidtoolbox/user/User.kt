@@ -1,4 +1,4 @@
-package fr.isen.duee.androidtoolbox
+package fr.isen.duee.androidtoolbox.user
 
 class User {
     var lastName: String = ""

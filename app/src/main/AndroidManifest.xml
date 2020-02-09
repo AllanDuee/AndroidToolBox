@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".WebServicesActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".SpecificUserActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".user.SpecificUserActivity" android:screenOrientation="portrait"/>
         <activity android:name=".PhoneInformationActivity" android:screenOrientation="portrait"/>
         <activity android:name=".SaveDataActivity" android:screenOrientation="portrait"/>
         <activity android:name=".LifeCycleActivity" android:screenOrientation="portrait"/>

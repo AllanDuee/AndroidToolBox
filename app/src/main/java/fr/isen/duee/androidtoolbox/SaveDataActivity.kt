@@ -13,6 +13,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 import com.google.gson.Gson
 import android.widget.Toast
+import fr.isen.duee.androidtoolbox.security.EncryptData
+import fr.isen.duee.androidtoolbox.user.User
 import java.io.File
 import java.io.FileReader
 
@@ -54,7 +56,7 @@ class SaveDataActivity : AppCompatActivity() {
             val firstName =  encryptData.encrypt(saveDataFirstnameInputText.text.toString(),sharedPreferences)
             val dateOfBirth = encryptData.encrypt(saveDataDatePickerZone.text.toString(), sharedPreferences)
 
-            val user = User( lastName, firstName, dateOfBirth )
+            val user = User(lastName, firstName, dateOfBirth)
            // val user = User(encryptData.encrypt(lastName,"lastName"),  encryptData.encrypt(firstName,"firstName"), encryptData.encrypt(dateOfBirth,"dateOfBirth") )
             File(cacheDir.absolutePath + "userInfo.json").writeText(Gson().toJson(user))
 

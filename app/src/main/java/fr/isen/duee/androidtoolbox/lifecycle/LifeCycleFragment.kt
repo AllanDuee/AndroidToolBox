@@ -1,4 +1,4 @@
-package fr.isen.duee.androidtoolbox
+package fr.isen.duee.androidtoolbox.lifecycle
 
 
 import android.os.Bundle
@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import fr.isen.duee.androidtoolbox.R
 import kotlinx.android.synthetic.main.fragment_life_cycle.*
 
 class LifeCycleFragment : Fragment() {

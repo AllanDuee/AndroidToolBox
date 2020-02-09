@@ -1,8 +1,10 @@
-package fr.isen.duee.androidtoolbox
+package fr.isen.duee.androidtoolbox.user
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import fr.isen.duee.androidtoolbox.PhoneInformationActivity
+import fr.isen.duee.androidtoolbox.R
 import kotlinx.android.synthetic.main.activity_specific_user.*
 
 class SpecificUserActivity : AppCompatActivity() {

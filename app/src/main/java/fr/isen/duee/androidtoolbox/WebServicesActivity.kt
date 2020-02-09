@@ -2,19 +2,16 @@ package fr.isen.duee.androidtoolbox
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.Response
-import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.GsonBuilder
+import fr.isen.duee.androidtoolbox.user.UserList
+import fr.isen.duee.androidtoolbox.user.UserListAdapter
 import kotlinx.android.synthetic.main.activity_web_services_actibity.*
-import org.json.JSONArray
-import org.json.JSONObject
 
 class WebServicesActivity : AppCompatActivity() {
 
@@ -30,7 +27,8 @@ class WebServicesActivity : AppCompatActivity() {
             val userList = gson.fromJson(it, UserList::class.java)
 
            webServicesRecyclerView.layoutManager = LinearLayoutManager(this)
-           webServicesRecyclerView.adapter = UserListAdapter(userList)
+           webServicesRecyclerView.adapter =
+               UserListAdapter(userList)
         }, Response.ErrorListener {
             Toast.makeText(this, getString(R.string.error_api), Toast.LENGTH_LONG).show()
         })

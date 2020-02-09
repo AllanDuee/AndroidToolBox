@@ -17,12 +17,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.provider.MediaStore
-import android.util.Log
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import fr.isen.duee.androidtoolbox.contact.Contact
+import fr.isen.duee.androidtoolbox.contact.ContactAdapter
+import fr.isen.duee.androidtoolbox.user.SpecificUserActivity
 import kotlinx.android.synthetic.main.activity_phone_information.*
-import kotlinx.android.synthetic.main.contact.*
 
 class PhoneInformationActivity : AppCompatActivity(), LocationListener {
     override fun onLocationChanged(location: Location?) {
@@ -74,7 +74,9 @@ class PhoneInformationActivity : AppCompatActivity(), LocationListener {
         addContacts()
 
         contactRecyclerView.layoutManager = LinearLayoutManager(this)
-        contactRecyclerView.adapter = ContactAdapter(contacts, { contact -> contactItemClicked(contact)})
+        contactRecyclerView.adapter = ContactAdapter(
+            contacts,
+            { contact -> contactItemClicked(contact) })
 
     }
 
@@ -146,7 +148,12 @@ class PhoneInformationActivity : AppCompatActivity(), LocationListener {
                                         it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
                                     builder.append("Contact: ").append(name).append(", Phone Number: ").append(
                                         phoneNumValue).append("\n\n")
-                                    contacts.add(Contact(name,phoneNumValue))
+                                    contacts.add(
+                                        Contact(
+                                            name,
+                                            phoneNumValue
+                                        )
+                                    )
                                 }
                             }
                             it.close()
@@ -168,7 +175,8 @@ class PhoneInformationActivity : AppCompatActivity(), LocationListener {
         val contactName = contact.name
         val contactNumber = contact.number
 
-        val intent = Intent(this@PhoneInformationActivity,SpecificUserActivity::class.java)
+        val intent = Intent(this@PhoneInformationActivity,
+            SpecificUserActivity::class.java)
         intent.putExtra("contactName",contactName)
         intent.putExtra("contactNumber",contactNumber)
         startActivity(intent)

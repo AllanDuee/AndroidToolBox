@@ -1,4 +1,4 @@
-package fr.isen.duee.androidtoolbox
+package fr.isen.duee.androidtoolbox.contact
 
 class Contact {
     var name: String = ""

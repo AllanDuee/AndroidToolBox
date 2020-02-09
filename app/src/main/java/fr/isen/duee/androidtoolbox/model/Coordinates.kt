@@ -1,4 +1,4 @@
-package fr.isen.duee.androidtoolbox
+package fr.isen.duee.androidtoolbox.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

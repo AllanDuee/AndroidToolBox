@@ -1,4 +1,4 @@
-package fr.isen.duee.androidtoolbox
+package fr.isen.duee.androidtoolbox.security
 
 import android.content.SharedPreferences
 import java.nio.charset.StandardCharsets

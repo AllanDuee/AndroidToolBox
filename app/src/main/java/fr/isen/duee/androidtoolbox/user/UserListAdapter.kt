@@ -1,7 +1,5 @@
-package fr.isen.duee.androidtoolbox
+package fr.isen.duee.androidtoolbox.user
 
-import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.user_list.view.*
+import fr.isen.duee.androidtoolbox.R
 
 class UserListAdapter(val user: UserList) : RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
 

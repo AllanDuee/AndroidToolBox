@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
+import fr.isen.duee.androidtoolbox.lifecycle.LifeCycleFragment
+import fr.isen.duee.androidtoolbox.lifecycle.LifeCycleSecondFragment
 import kotlinx.android.synthetic.main.activity_life_cycle.*
 
 private const val NUM_PAGES = 2
@@ -63,7 +65,7 @@ class LifeCycleActivity : AppCompatActivity() {
         override fun getItem(position: Int): Fragment {
             when (position) {
                 0 -> return LifeCycleFragment()
-                else -> return LifeCycleSecondFragment ()
+                else -> return LifeCycleSecondFragment()
             }
         }
     }
