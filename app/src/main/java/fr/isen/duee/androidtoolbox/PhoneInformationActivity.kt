@@ -340,6 +340,7 @@ class PhoneInformationActivity : AppCompatActivity(), LocationListener {
             //set image captured to image view
             phoneInformationPicture.setImageURI(image_uri)
         }
-        getLocation()
+        loadContacts()
+        loadLocation()
     }
 }
