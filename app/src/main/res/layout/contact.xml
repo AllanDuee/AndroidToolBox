@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/singleContact">
+    android:id="@+id/singleContact"
+    android:background="@color/colorWhite">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/contactToolbar"
         android:layout_width="422dp"
         android:layout_height="101dp"
-        android:background="?attr/colorPrimary"
-        android:backgroundTint="@color/colorWhite"
+        android:background="@color/colorWhite"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
