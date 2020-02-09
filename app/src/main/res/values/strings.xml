@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidToolBox</string>
+    <string name="app_name">Allan DUEE</string>
     <string name="on_create">onCreate</string>
     <string name="on_start">onStart</string>
     <string name="on_pause">onPause</string>
@@ -11,7 +11,8 @@
     <string name="incorrect_pseudo">identifiant incorrect</string>
     <string name="no_contact_available">Pas de contact Disponible</string>
     <string name="permission_denied">Permission refusé</string>
-    <string name="user_saved">"L'utilisateur a été sauvegardé"</string>
+    <string name="user_saved">"L'utilisateur a été sauvegardé via un chiffrement RSA"</string>
+    <string name="user_decrypt">"Déchiffrement des informations de L'utilisateur"</string>
     <string name="json_info_title">Information du Json : </string>
     <string name="json_cancel_dialog">Vous avez fermé la boite de dialogue</string>
     <string name="json_cancel_button">Fermer</string>

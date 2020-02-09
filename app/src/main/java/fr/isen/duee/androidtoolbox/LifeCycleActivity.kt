@@ -52,7 +52,8 @@ class LifeCycleActivity : AppCompatActivity() {
         if (mPager.currentItem == 0) {
             super.onBackPressed()
         } else {
-            mPager.currentItem = mPager.currentItem - 1
+            this.finish()
+            //mPager.currentItem = mPager.currentItem - 1
         }
     }
 

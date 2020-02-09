@@ -2,6 +2,8 @@ package fr.isen.duee.androidtoolbox
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -17,6 +19,8 @@ import java.io.FileReader
 class SaveDataActivity : AppCompatActivity() {
 
     var cal = Calendar.getInstance()
+    var encryptData = EncryptData()
+    private val sharedPrefFile = "privateKey"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,26 +47,32 @@ class SaveDataActivity : AppCompatActivity() {
 
     fun saveUserInfoButton() {
         saveDataSaveButton.setOnClickListener {
-            val lastName = saveDataLastnameInputText.text.toString()
-            val firstName = saveDataFirstnameInputText.text.toString()
-            val dateOfBirth = saveDataDatePickerZone.text.toString()
+            val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+            encryptData.generateKeyPair(sharedPreferences)
+
+            val lastName = encryptData.encrypt(saveDataLastnameInputText.text.toString(), sharedPreferences)
+            val firstName =  encryptData.encrypt(saveDataFirstnameInputText.text.toString(),sharedPreferences)
+            val dateOfBirth = encryptData.encrypt(saveDataDatePickerZone.text.toString(), sharedPreferences)
 
             val user = User( lastName, firstName, dateOfBirth )
+           // val user = User(encryptData.encrypt(lastName,"lastName"),  encryptData.encrypt(firstName,"firstName"), encryptData.encrypt(dateOfBirth,"dateOfBirth") )
             File(cacheDir.absolutePath + "userInfo.json").writeText(Gson().toJson(user))
+
             Toast.makeText(this@SaveDataActivity, getString(R.string.user_saved), Toast.LENGTH_SHORT).show()
         }
     }
 
     fun readUserInfoButton() {
         saveDataReadButton.setOnClickListener {
-            //var user = User( "", "", "" )
-
+            val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
            var user = Gson().fromJson(FileReader(cacheDir.absolutePath + "userInfo.json"), User::class.java)
 
-            val firstNameUser = user.firstName
-            val lastNameUser = user.lastName
-            val dateOfBirthUser = user.dateOfBirth
-            val ageUser = getUserAge(user.dateOfBirth)
+            val firstNameUser = encryptData.decrypt(user.firstName,sharedPreferences)
+            val lastNameUser =encryptData.decrypt(user.lastName,sharedPreferences)
+            val dateOfBirthUser = encryptData.decrypt(user.dateOfBirth,sharedPreferences)
+            val ageUser = getUserAge(dateOfBirthUser)
+
+            Toast.makeText(this@SaveDataActivity, getString(R.string.user_decrypt), Toast.LENGTH_SHORT).show()
 
             popUp(lastNameUser, firstNameUser, dateOfBirthUser, ageUser)
         }

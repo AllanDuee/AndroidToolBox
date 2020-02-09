@@ -17,13 +17,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WebServicesActivity"></activity>
-        <activity android:name=".SpecificUserActivity" />
-        <activity android:name=".PhoneInformationActivity" />
-        <activity android:name=".SaveDataActivity" />
-        <activity android:name=".LifeCycleActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".WebServicesActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".SpecificUserActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".PhoneInformationActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".SaveDataActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".LifeCycleActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".HomeActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".LoginActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

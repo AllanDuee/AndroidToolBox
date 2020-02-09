@@ -17,10 +17,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_phone_information.*
+import kotlinx.android.synthetic.main.contact.*
 
 class PhoneInformationActivity : AppCompatActivity(), LocationListener {
     override fun onLocationChanged(location: Location?) {
@@ -56,6 +58,7 @@ class PhoneInformationActivity : AppCompatActivity(), LocationListener {
     var image_uri: Uri? = null
 
     val contacts = mutableListOf<Contact>()
+    //val adapter = GroupAdapter<ContactAdapter.ViewHolder>()
 
     private var locationManager : LocationManager? = null
 
@@ -83,7 +86,7 @@ class PhoneInformationActivity : AppCompatActivity(), LocationListener {
 
         val location = locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER)
         if (location != null) {
-            phoneInformationLatLongValue.text = getString(R.string.phone_information_long_lat_permission,  location?.latitude, location?.longitude)
+            phoneInformationLatLongValue.text = getString(R.string.phone_information_long_lat_permission,  location.latitude, location.longitude)
         }
     }
 
