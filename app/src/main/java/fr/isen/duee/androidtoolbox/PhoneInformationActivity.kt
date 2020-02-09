@@ -124,9 +124,10 @@ class PhoneInformationActivity : AppCompatActivity(), LocationListener {
         }
     }
 
+    @SuppressLint("Recycle")
     private fun getContacts(): StringBuilder {
         val builder = StringBuilder()
-        val resolver: ContentResolver = contentResolver;
+        val resolver: ContentResolver = contentResolver
         val cursor = resolver.query(ContactsContract.Contacts.CONTENT_URI, null, null, null,
             null)
         cursor?.let {
@@ -203,18 +204,18 @@ class PhoneInformationActivity : AppCompatActivity(), LocationListener {
             if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
                 PackageManager.PERMISSION_DENIED){
                 //permission denied
-                val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
+                val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
                 //show popup to request runtime permission
-                requestPermissions(permissions, PERMISSION_CODE_GALLERY);
+                requestPermissions(permissions, PERMISSION_CODE_GALLERY)
             }
             else{
                 //permission already granted
-                pickImageFromGallery();
+                pickImageFromGallery()
             }
         }
         else{
             //system OS is < Marshmallow
-            pickImageFromGallery();
+            pickImageFromGallery()
         }
     }
 
@@ -339,5 +340,6 @@ class PhoneInformationActivity : AppCompatActivity(), LocationListener {
             //set image captured to image view
             phoneInformationPicture.setImageURI(image_uri)
         }
+        getLocation()
     }
 }
