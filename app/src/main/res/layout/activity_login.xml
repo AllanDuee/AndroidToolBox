@@ -47,30 +47,36 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/loginEmailInput"
-        android:layout_width="317dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="64dp"
-        app:layout_constraintStart_toStartOf="@+id/loginPicture"
-        app:layout_constraintTop_toBottomOf="@+id/loginPicture"
-        android:textColorHint="@color/colorBlueDark">
+        android:textColorHint="@color/colorBlueDark"
+        app:hintAnimationEnabled="false"
+        app:layout_constraintEnd_toEndOf="@+id/loginPicture"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/loginPicture">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/loginEmailInputText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorBlueLight"
-                android:hint="@string/login_activity_label_email" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/loginEmailInputText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/login_activity_label_email"
+            android:textColor="@color/colorBlueLight" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/loginPasswordInput"
-        android:layout_width="317dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:textColorHint="@color/colorBlueDark"
         app:layout_constraintStart_toStartOf="@+id/loginEmailInput"
         app:layout_constraintTop_toBottomOf="@+id/loginEmailInput"
-        app:passwordToggleEnabled="true"
-        android:textColorHint="@color/colorBlueDark">
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/loginPasswordInputText"
@@ -80,6 +86,27 @@
             android:inputType="textPassword"
             android:textColor="@color/colorBlueLight" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="46dp"
+        android:layout_height="48dp"
+        android:contentDescription="@string/lock_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/loginPasswordInput"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/loginPasswordInput"
+        app:srcCompat="@drawable/locklogo" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="46dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@string/user_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/loginEmailInput"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/loginEmailInput"
+        app:srcCompat="@drawable/userlogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

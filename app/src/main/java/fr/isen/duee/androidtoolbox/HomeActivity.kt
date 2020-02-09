@@ -15,19 +15,39 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        logoClick()
+        titleClick()
+
+        disconnectButtonClick()
+    }
+
+    fun logoClick() {
         lifecycleButtonClick()
         saveButtonClick()
         permissionButtonClick()
-        webServicesClick()
+        webServicesButtonClick()
+    }
 
-        disconnectButtonClick()
+    fun titleClick() {
+        lifecycleTextClick()
+        saveTextClick()
+        permissionTextClick()
+        webServicesTextClick()
     }
 
     fun lifecycleButtonClick(){
         homeLifecyclePicture.setOnClickListener {
 
             val intent = Intent(this, LifeCycleActivity::class.java)
-            startActivity(intent);
+            startActivity(intent)
+        }
+    }
+
+    fun lifecycleTextClick(){
+        homeLifecycleTitle.setOnClickListener {
+
+            val intent = Intent(this, LifeCycleActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -35,7 +55,15 @@ class HomeActivity : AppCompatActivity() {
         homeSavePicture.setOnClickListener {
 
             val intent = Intent(this, SaveDataActivity::class.java)
-            startActivity(intent);
+            startActivity(intent)
+        }
+    }
+
+    fun saveTextClick(){
+        homeSaveTitle.setOnClickListener {
+
+            val intent = Intent(this, SaveDataActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -43,15 +71,31 @@ class HomeActivity : AppCompatActivity() {
         homePermissionsPicture.setOnClickListener {
 
             val intent = Intent(this, PhoneInformationActivity::class.java)
-            startActivity(intent);
+            startActivity(intent)
         }
     }
 
-    fun webServicesClick(){
+    fun permissionTextClick(){
+        homePermissionsTitle.setOnClickListener {
+
+            val intent = Intent(this, PhoneInformationActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    fun webServicesButtonClick(){
         homeWebservicesPicture.setOnClickListener {
 
             val intent = Intent(this, WebServicesActivity::class.java)
-            startActivity(intent);
+            startActivity(intent)
+        }
+    }
+
+    fun webServicesTextClick(){
+        homeWebservicesTitle.setOnClickListener {
+
+            val intent = Intent(this, WebServicesActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -63,7 +107,7 @@ class HomeActivity : AppCompatActivity() {
             editor.clear()
             editor.remove("email")
             editor.remove("password")
-            editor.commit()
+            editor.apply()
 
             this.finish()
 

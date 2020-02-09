@@ -68,5 +68,7 @@
     <string name="webservices_icon">Webservices Icon</string>
     <string name="logout_icon">Logout Icon</string>
     <string name="camera_or_gallery_picture">Camera or Gallery picture</string>
+    <string name="lock_icon">Lock Icon</string>
+    <string name="user_icon">User Icon</string>
 
 </resources>
