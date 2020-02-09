@@ -1,5 +1,6 @@
 package fr.isen.duee.androidtoolbox
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Context
@@ -49,34 +50,55 @@ class SaveDataActivity : AppCompatActivity() {
 
     fun saveUserInfoButton() {
         saveDataSaveButton.setOnClickListener {
-            val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
-            encryptData.generateKeyPair(sharedPreferences)
 
-            val lastName = encryptData.encrypt(saveDataLastnameInputText.text.toString(), sharedPreferences)
-            val firstName =  encryptData.encrypt(saveDataFirstnameInputText.text.toString(),sharedPreferences)
-            val dateOfBirth = encryptData.encrypt(saveDataDatePickerZone.text.toString(), sharedPreferences)
+            val lastNameInput = saveDataLastnameInputText.text.toString()
+            val firstNameInput = saveDataFirstnameInputText.text.toString()
+            val dateOfBirthInput = saveDataDatePickerZone.text.toString()
 
-            val user = User(lastName, firstName, dateOfBirth)
-           // val user = User(encryptData.encrypt(lastName,"lastName"),  encryptData.encrypt(firstName,"firstName"), encryptData.encrypt(dateOfBirth,"dateOfBirth") )
-            File(cacheDir.absolutePath + "userInfo.json").writeText(Gson().toJson(user))
+            if(lastNameInput.isNotBlank() && firstNameInput.isNotBlank() && dateOfBirthInput != "--/--/----") {
+                val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+                encryptData.generateKeyPair(sharedPreferences)
 
-            Toast.makeText(this@SaveDataActivity, getString(R.string.user_saved), Toast.LENGTH_SHORT).show()
+                val lastName = encryptData.encrypt(saveDataLastnameInputText.text.toString(), sharedPreferences)
+                val firstName =  encryptData.encrypt(saveDataFirstnameInputText.text.toString(),sharedPreferences)
+                val dateOfBirth = encryptData.encrypt(saveDataDatePickerZone.text.toString(), sharedPreferences)
+
+                val user = User(lastName, firstName, dateOfBirth)
+
+                File(cacheDir.absolutePath + "userInfo.json").writeText(Gson().toJson(user))
+
+                Toast.makeText(this@SaveDataActivity, getString(R.string.user_saved), Toast.LENGTH_SHORT).show()
+            }
+            else {
+                Toast.makeText(this@SaveDataActivity, getString(R.string.error_json_save), Toast.LENGTH_LONG).show()
+            }
         }
     }
 
     fun readUserInfoButton() {
         saveDataReadButton.setOnClickListener {
             val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
-           var user = Gson().fromJson(FileReader(cacheDir.absolutePath + "userInfo.json"), User::class.java)
 
-            val firstNameUser = encryptData.decrypt(user.firstName,sharedPreferences)
-            val lastNameUser =encryptData.decrypt(user.lastName,sharedPreferences)
-            val dateOfBirthUser = encryptData.decrypt(user.dateOfBirth,sharedPreferences)
-            val ageUser = getUserAge(dateOfBirthUser)
+            if(File(cacheDir.absolutePath+ "userInfo.json").exists()){
+                val user = Gson().fromJson(FileReader(cacheDir.absolutePath + "userInfo.json"), User::class.java)
 
-            Toast.makeText(this@SaveDataActivity, getString(R.string.user_decrypt), Toast.LENGTH_SHORT).show()
+                val firstNameUser = encryptData.decrypt(user.firstName,sharedPreferences)
+                val lastNameUser =encryptData.decrypt(user.lastName,sharedPreferences)
+                if(encryptData.decrypt(user.dateOfBirth,sharedPreferences).isNotEmpty()){
+                    val dateOfBirthUser = encryptData.decrypt(user.dateOfBirth,sharedPreferences)
+                    val ageUser = getUserAge(dateOfBirthUser)
 
-            popUp(lastNameUser, firstNameUser, dateOfBirthUser, ageUser)
+                    Toast.makeText(this@SaveDataActivity, getString(R.string.user_decrypt), Toast.LENGTH_SHORT).show()
+
+                    popUp(lastNameUser, firstNameUser, dateOfBirthUser, ageUser)
+                }
+                else {
+                    Toast.makeText(applicationContext,getString(R.string.error_json_read),Toast.LENGTH_LONG).show()
+                }
+            }
+            else {
+                Toast.makeText(applicationContext,getString(R.string.error_json_read),Toast.LENGTH_LONG).show()
+            }
         }
     }
 
@@ -112,8 +134,9 @@ class SaveDataActivity : AppCompatActivity() {
         return dateSetListener
     }
 
+    @SuppressLint("SimpleDateFormat")
     fun getUserAge(dateOfBirth: String): Long{
-        val dateFormat = SimpleDateFormat("M/dd/yyyy")
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy")
         val currentDate = Calendar.getInstance().timeInMillis
 
         val userDateOfBirth = dateFormat.parse(dateOfBirth).time
@@ -123,8 +146,7 @@ class SaveDataActivity : AppCompatActivity() {
         val ageInMinutes = ageInSecond / 60
         val ageInHours = ageInMinutes / 60
         val ageInDays = ageInHours / 24
-        val ageInYears = ageInDays / 365
 
-        return ageInYears
+        return ageInDays / 365
     }
 }
